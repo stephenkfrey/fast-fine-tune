@@ -9,3 +9,4 @@ gpt-aq-formatted.csvgpt-qa-train_prepared.jsonl
 gpt-qa-train.csv
 gpt-qa-valid_prepared.jsonl
 gpt-qa-valid.csv
+notelogs.md
