@@ -1,4 +1,4 @@
-prompt,completion
+question,answer
 "Based on the book of the same name, what are the requirements for “Parallel Distributed Processing”?","- A set of processing units
 - A state of activation
 - An output function for each unit
