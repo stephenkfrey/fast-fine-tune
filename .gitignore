@@ -1,3 +1,6 @@
-gpt-responses.txt
-gpt-responses.csv
-fastai.csv
+fastai-qa-cleaned.csv
+fastai-qa-cropped.csv
+gpt-chat-log-cleaned.txt
+gpt-qa-df.csv
+gpt-qa-trimmed.csv
+gpt-qa.csv
