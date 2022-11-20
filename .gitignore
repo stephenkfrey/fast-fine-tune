@@ -4,3 +4,8 @@ gpt-chat-log-cleaned.txt
 gpt-qa-df.csv
 gpt-qa-trimmed.csv
 gpt-qa.csv
+gpt-qa-formatted_prepared.jsonl
+gpt-aq-formatted.csvgpt-qa-train_prepared.jsonl
+gpt-qa-train.csv
+gpt-qa-valid_prepared.jsonl
+gpt-qa-valid.csv
