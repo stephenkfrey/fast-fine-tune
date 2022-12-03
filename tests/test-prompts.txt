@@ -1,0 +1,6 @@
+What is the difference between a CNN and a DNN? 
+How many roads must a man walk down? 
+What does `DataLoaders` do in the fast.ai library? 
+Please write python code for a list comprehension
+Please write a bash script to save the output of a terminal command to a json file
+What are the steps for stochastic gradient descent? 

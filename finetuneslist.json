@@ -1,0 +1,109 @@
+{
+  "data": [
+    {
+      "created_at": 1668933408,
+      "fine_tuned_model": "curie:ft-personal-2022-11-20-08-38-46",
+      "hyperparams": {
+        "batch_size": 1,
+        "learning_rate_multiplier": 0.1,
+        "n_epochs": 4,
+        "prompt_loss_weight": 0.01
+      },
+      "id": "ft-zHk8gGvZdaBNRVheXq5fZFqt",
+      "model": "curie",
+      "object": "fine-tune",
+      "organization_id": "org-5RSpJP9M5vC6iGBmX0vRfiMp",
+      "result_files": [
+        {
+          "bytes": 11082,
+          "created_at": 1668933527,
+          "filename": "compiled_results.csv",
+          "id": "file-EZy5duulRUswzYdqj6LuW76a",
+          "object": "file",
+          "purpose": "fine-tune-results",
+          "status": "processed",
+          "status_details": null
+        }
+      ],
+      "status": "succeeded",
+      "training_files": [
+        {
+          "bytes": 50782,
+          "created_at": 1668933407,
+          "filename": "gpt-qa-train_prepared.jsonl",
+          "id": "file-5fYU80lXy5FQgfmfVU56k8nb",
+          "object": "file",
+          "purpose": "fine-tune",
+          "status": "processed",
+          "status_details": null
+        }
+      ],
+      "updated_at": 1668933527,
+      "validation_files": [
+        {
+          "bytes": 12227,
+          "created_at": 1668933408,
+          "filename": "gpt-qa-valid_prepared.jsonl",
+          "id": "file-99tOIqCaPbNwL90bI1K1yq23",
+          "object": "file",
+          "purpose": "fine-tune",
+          "status": "processed",
+          "status_details": null
+        }
+      ]
+    },
+    {
+      "created_at": 1668933939,
+      "fine_tuned_model": "davinci:ft-sandbox:gpt-ml-qa-pairs-a-2022-11-20-08-49-22",
+      "hyperparams": {
+        "batch_size": 1,
+        "learning_rate_multiplier": 0.1,
+        "n_epochs": 4,
+        "prompt_loss_weight": 0.01
+      },
+      "id": "ft-xNzKl8ORDdASWIALy5WoSLcY",
+      "model": "davinci",
+      "object": "fine-tune",
+      "organization_id": "org-5RSpJP9M5vC6iGBmX0vRfiMp",
+      "result_files": [
+        {
+          "bytes": 11368,
+          "created_at": 1668934163,
+          "filename": "compiled_results.csv",
+          "id": "file-rGIPU3ndPAZXVRSBT4xhjDKy",
+          "object": "file",
+          "purpose": "fine-tune-results",
+          "status": "processed",
+          "status_details": null
+        }
+      ],
+      "status": "succeeded",
+      "training_files": [
+        {
+          "bytes": 50782,
+          "created_at": 1668933904,
+          "filename": "gpt-qa-train_prepared.jsonl",
+          "id": "file-XCo6Sza9cVyfIWjPmoatpK3s",
+          "object": "file",
+          "purpose": "fine-tune",
+          "status": "processed",
+          "status_details": null
+        }
+      ],
+      "updated_at": 1668934163,
+      "validation_files": [
+        {
+          "bytes": 12227,
+          "created_at": 1668933939,
+          "filename": "gpt-qa-valid_prepared.jsonl",
+          "id": "file-HbOaJkGRRu4hp4C8DQ4PtZ0t",
+          "object": "file",
+          "purpose": "fine-tune",
+          "status": "processed",
+          "status_details": null
+        }
+      ]
+    }
+  ],
+  "object": "list"
+}
