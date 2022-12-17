@@ -1,123 +1,300 @@
 prompt,completion
-"What is the difference between a CNN and a DNN? 
+"a circuit board with moss growing on it 
 ","
-CNNs are a subset of DNNs. CNNs contain one or more layers, but only those layers used for feeding forward and backpropagation. DNNs include the convolutional layers, but also connect them to fully-connected layers which can be used for classification, regression and other tasks.
+IMAGE 
 
-How does an ANN learn by seeing examples? 
 
-ANNs learn by looking at examples, in other words, train by example. They don’t need instructions or labels, as a human would use to understand something (for example, The dog is brown.). They learn on their own from observing examples and comparing them with the correct answer. 
-
-Can we build our own ANN using weights and biases? 
-
-Yes. A commonly used technique, called the perceptron, allows us to build very simple ANNs starting with the input layer and ending with the output layer. Instead of using weights and biases, the activation function will act as the weights and biases. Therefore, it is our responsibility to choose a good activation function that will help the network get trained faster.
-
-What is overfitting and how do we prevent it? 
-
-Overfitting is when there is too much complexity in a neural network such that it makes the model accurate for the dataset, but not general. To prevent it would mean to use certain regularization techniques to ensure that the model is not overfitting. 
-
-What does it mean to say a parameter has been overparameterized? 
-
-A parameter has been overparameterized if it has been given so much weights, biases, or other parameters that adding more does not make a real difference, therefore wasting computational resources. 
-
-What are the different types of machine learning? 
-
-There are three types of machine learning: supervised, unsupervised and reinforcement. Each require certain data sets and need varying knowledge of the data and ability to analyze it. 
-
-What are the three different types of supervised learning? 
- There are three different types of supervised learning: classification, regression and anomaly detection. 
-Classification is learning to predict an outcome (for example, Is this building going to collapse, Is this email spam, Is this transaction fraudulent). Regression is learning to predict a continuous value (for example, Is this building going to collapse?, How tall is this building? How many people live here?). Anomaly detection is when an algorithm is trying"
-"How many roads must a man walk down? 
-","endless and countless.
-""How many roads must a man walk down?'""; he sang – A new day is dawning, 'how many roads'.
-'Endless and countless,'; he cried – 'but it ain't"
-"What does `DataLoaders` do in the fast.ai library? 
+"
+"a group of warlocks caravaning the desert
 ","
-The DataLoaders module contains various helper functions for loading and processing data for modelling. (source):
-The DataLoaders module basically provides a common set of utilities for tasks that need to be done with almost every dataset, for example:  - transform the dataset name to its index in the training data set; - check the file format of a dataset; - create lists of fake images for data augmentation; - convert labels from integer or strings to vectors. The DataLoaders helps you save time in writing data manipulation code by providing high-level tools that can be chained together to create your own preprocessing pipelines (source). 
-Once the data is loaded and processed, it is passed to an estimator model which determines whether the model is ready. The trained model is then stored in a checkpoint so that it is saved for the next time it is run, that way it is possible to continuously run a trained model throughout the day. 
-Cite"
-"Please write python code for a list comprehension
+evolving squirrely laughter from the shrilly whirling winds of the desert
+
+evolving to a life of parasitic symbiosis endemic to the desert
+
+faintly starlight glistening on metal chains littered with old bones
+
+fanciful architecture built from chiseled sandstone
+
+factories pumped steam from their chimneys
+
+fallen temples toppled like sand dunes against the red dunes
+
+false belief that the travel's costs would be offset by fees paid for naming the land after oneself
+
+fantastical legends composed around the cursed land
+
+far more leisurely pace than most places of commerce
+
+fatally poisoned in your sleep amongst the sand dunes by cloaked assassins while you dreamed of black-sailed galleons rocking in stormy seas
+
+feet bound in rags of cloth, shuffling through the sand
+
+ferocious sandstorms scouring the land in varying patterns throughout the year
+
+first the ghostlights came
+
+flame-domed church that survived the burning of the town
+
+flies circled over the fresh corpse
+
+flooded by its own people seeking escape during the war
+
+forerunners of the modern merchant caravan
+
+fortified hillside watchtowers overlooking the desert
+
+fortress becomes a ruin after sand swallows it whole
+
+found outside of time and space in the deep desert between time and space
+
+fruition gains us nothing
+
+funereal call to prayer echoing from the spires of the pyramids
+
+furuous mane of narrow dunes
+
+fuzzy red-purple horizon in all directions
+
+gated community of foreigners here to facilitate trade
+
+gazelle hunt by moonlight
+
+getting ahead of yourself again, the wolf said
+
+glaring light that filtered down through broken glass
+
+glorious kingdom of a thousand years founded upon alchemical mysticism and human servitude
+
+gold wash paid to keep the border open and allow rights of passage
+
+great (some) roads of the empire crisscrossed the desert
+
+grid of new towns and cities established in the desert and along trade routes
+
+group of explorers in a red truck with bright blue accents and decals
+
+gypsy steppes where wagons and horses still flourish
+
+hankering for dissident literature and dark romance novels outlawed by the state
+
+haunt by those who insist on"
+"a child's cute crayon drawing
 ","
-that can be used to convert a list of integers between -10 and 10 to
+good memory of your moms voice
 
-a list consisting of two lists with the same indices: a list of the integers
+listening to the gentle rain falling
 
-finally, do this in two ways. First, modify an existing list. Second, create a
+quiet, restful sleep
 
-new list. Include the code for your solutions. You do not need to print out any
-
-output or save the output in a variable. Your results should look like:
-
-1 2 3 4 5 6 7
-
-[2.
-
-8/3.
-
-3 9/6.
-
-6] [3.
-
-8/3.
-
-3 8/6.
-
-6]
-
-68.
-
-Write python code for a function that determines if a two dimensional array
-
-is symmetrical. The function first determines if the number of rows is
-
-equal to the number of columns; it then constructs a list of row and
-Depending on the
-
-column sums based on each axis. It then uses the total sum of the row
-
-and column sums to determine if the array is symmetrical (the sum
-
-must be equal to zero). It returns the 'symmetric' value if it is
-The function checks is there are equal number of rows and columns, then it calculates the sum of all the numbers in the respective column for each row and returns the value if it is zero or 'not symmetric' otherwise. a list with the appropriate sum for each row. The message 'Not Symmetric' is returned if the sum of the row and column values don’t equal zero.
-
-69.
-
-Write a function named 'split_list' that splits up a list into multiple
-
-lists depending on an integer value passed in. For example, if the valueis 0, split up the list into two lists, one containing numbers that are greaterthan or equal to 0, and the other containing numbers that are less than 0. If thevalue is 1, break apart the list into three lists, containing list ending with numbers that are greater than or equal to 1, those ending 'Greater than'. 'Greater than.' and <1. Finally, 'Less than or equal to 2.' the exponents. Each list contains th return a string response to display the list and Convert a list to seperate lists depending on an integer value The function takes a list, splits"
-"Please write a bash script to save the output of a terminal command to a json file
+"
+"my worst nightmare 
 ","
-We need to use the following command as bash script.
+""Olive Forever"" became an LGBT cult film. According to Edwards' friend, Robert Polidori, who met him on set, Elizabeth Taylor and Rock Hudson and ""the entire crew did cocaine all night long"" celebration party after the end of the shoot. Polidori also stated that there were some homosexual relationships among the cast and crew including him and the set photographer, and that they shared at least one threesome. According to Polidori, Taylor said privately that she ""felt sorry for Sam being a nelly queen"". A few years later, according to Polidori, Taylor and Hudson broke out laughing about the film at a Los Angeles party when it came on TV and commented, ""Sam thinks he was making Harry Cohn's ""All About Eve"", but all he really made was ""Gigot"".""
 
-ls -lh json_output.txt The output will then be written to a file called 'json_output.txt'.
+A. H. Weiler of ""The New York Times"" called it ""a choiceless though solemnly entertained film ... both amusing and ridiculous, not because its characters can't be taken seriously or because they're phony, but simply because they're preposterous. They do what they do and their handsomeness is their undoing."" ""Variety"" wrote: ""Although we are treated to some vigorous action sequences and narration, the more important element in this costly American International Pictures entry is just plain weirdness. This gives the film a bizarre quality and surreality that differentiates it from the normal youthful sex romps."" Richard L. Coe of ""The Washington Post"" called it ""bizarre [and] episodic."" Janet Maslin, also of ""The New York Times"", called it ""a cobbled-together oddity, a less than melodious blend of hard knocks blaxploitation, brash, pop culture-inflected partying and flip social satire."" Allmovie wrote, """"Olive"" is far from great, but represents an ambitious attempt on Edwards' part to deal with weighty issues that Hollywood seldom, if ever, had touched upon before. It is not surprising that the film has attracted a cult following."" 
 
-The output will then be written to a file called 'json_output.txt'. #!/bin/bash ls -lh json_output.txt
+Allmovie wrote, """"Olive Forever"" is a movie in which virtually nothing happens (it's just over 90 minutes long), yet this works to its advantage. This quirky, mildly satirical revenge fantasy is supported by top-notch art direction, coloring, costume design and cinematography, which oddly enough contribute more toward conveying the front-of"
+"a mysterious message in a bottle
+","
+an image of loving care
 
-Using python script to convert csv files to json
+a story of life from afar....
 
-Here, we are not going to save the output of a terminal command to a json file, but we are going to convert csv files to json.
+And in my soul I hear a cry, a prayer.
 
-Install pandas: pip install pandas Create a python script in datafolder.py The contents of the script are given below.
+I heard it all these years, but never knew
 
-In the above script, we are going to import Pandas, and then using it, we will start to create a dataframe using the csv files.
+a love from someone else that was so near.
 
-Now that the dataframe has been created, we are printing the first few rows of it. Then the dataframe is converted to json, and finally the storage location is printed.
 
-The output of the script will be a JSON object containing the first few rows of the dataframe. It is saved to a JSON file index.json in the Data folder.
 
-Run the script.
+(c) James Allan Turner
 
-Steps for getting the output for the project:"
-What are the steps for stochastic gradient descent? ,"
-Initialize the parameters of the model with random numbers.
-End the model training loop when the number of epochs is reached or a maximum number of epochs is set. For this particular training, two epochs were sufficient based on the model performance.
-Output the model training values, which give insight into how well the model is doing.
-End the model training loop when the validation loss and model loss are both not improving. This means the model will not improve any further.
-End the model training loop when a threshold is reached for all three measures. The model converged upon, which means there is a high likelihood that model improvements will stop . This is an important metric to monitor every few hundred iterations of training.
-End the model training loop when there isn’t sufficient data to fit the model. This can happen after about 5,500 training examples.
+x
 
-After finishing the model training phase there are many different ways to measure model performance to see how well it does. One of the most known measures is the accuracy. 
-It is the measure of how many out of the predicted items in the dataset the model correctly predicts. A model that has a low accuracy may mean several things. First, it could be due to the model being underfit, meaning that it hasn’t learned the correct relationship between the input and output variables. Second, a model may be overfit (or overgeneralized) to the training set. That happens when the model accurately models the training use case but is not able to predict the output labels in the test dataset because it has fit the training data too well and is not generalizing correctly.
-When comparing models to each other, their accuracies should not be compared directly. Models that have high accuracy can still be beaten by models that have lower accuracy if the high accuracy model is either overfit or underfit. When checking model performance, it is best to also look at the loss and precision.
+"
+"the great elf
+","
+of my life was he,
 
-Losses are used to measure the performance of a model and it is a function of the discrepancy between normal training data and a model’s prediction. The greater the loss value the better the model’s performance. For example, the TensorFlow implementation of Neural Machine Translation (NMT) achieves a BLEU score of around 32-36 for high-end languages such as Spanish or French, but only 18-19 for lower-end languages such as Sanskrit where it is much"
+the wisest elf there's been
+
+since Christ was not
+
+upon this earth.
+
+And now I may say
+
+my days on earth are done:
+
+I go where he is gone,
+
+and weep and mourn alone.
+
+(From ""The Clark Book of Rhymes"" by Kenneth Sivertsen.)
+
+-----
+
+A version of this poem first appeared in the 1998' ""Alfheim Yearbook"" under the title ""Haldor and Snorri."" I am indebted to Carl H. Kraeling for some insightful editorial suggestions.
+
+Revised December 2003"
+"beautiful forests and trees from above 
+","
+Edgar the Peaceful
+
+Guthrum, King of Denmark
+
+Harold Godwinson (Historical) - Saxon King of England who was defeated by William the Conqueror at the Battle of Hastings in 1066 
+
+Hárek of Ringerike
+
+Harold Haardrade - Old English: Harold Hardraada or Harold the Ruthless (995 – 28 September 1066) was a powerful 11th-century Earl of Norway. 
+
+Ælfgifu of Shaftesbury (Historical) - Anglo-Saxon noblewoman and abbess 
+
+Egyptian Royalty
+
+Hussite Rebellion
+
+In the Footsteps of Alexander the Great
+
+Iranian Royalty
+
+Madog ap Llywelyn (Historical) - Prince of Gwynedd and Powys, who was last to claim the title Prince of Wales. Most of the places named in his honour are in Northern Wales – such as Lake Bala, where he reputedly climbed into a coracle in 1294 
+
+Indus Valley Civilization
+
+Irish Royalty 
+
+Issar Reis (Historical) - 15th century Muslim Sodalis Barbatus sea captain and adventurer 
+
+Italian City States
+
+
+
+Jaguar Warrior (Aztec) (Historical) - Elite group of soldiers that served the Aztec city-state of Tenochtitlan during the Late Postclassic period 
+
+Joan of Arc (Historical) - Born as Jeanne d'Arc, is regarded as a heroine of France for her role during the Lancastrian phase of the Hundred Years' War, and was canonized as a Roman Catholic saint. She was born to Jacques d'Arc and Isabelle Romée, a peasant family, at Domrémy (now in the département of Meuse). 
+Eleanor of Aquitaine
+John Balliol
+
+Kublai Khan
+
+Lady Murasaki (Historical) - Japanese writer best known for her masterpiece, ""The Tale of Genji"", an elegy on the fragility of life, written about 1000 AD 
+
+Lamarck - Benoît de Maillet (Historical) - French naturalist and biologist 
+
+Leif Ericson
+
+Leonardo da Vinci (Historical) - Italian polymath, scientist, mathematician, engineer, inventor"
+"a neon sign that says purple
+","
+and
+
+your eyes are neon green
+
+and
+
+i'm practically coming undone
+
+
+
+cause when you look at me
+
+it's like i see fireworks
+
+it's like all my favorite colors in the sky at once
+
+it's like when things are unclear
+
+and you look at me
+
+it's like i'm just one thing
+
+one thing
+
+one thing
+
+one thing
+
+
+
+one thing
+
+
+
+You're my neon sign"
+"gandolf
+","
+thanks :D
+
+12:45 am grannyrose
+
+mwah, mwah, mwah to our beloved mods and friends.
+
+Pls don't let on that i just said all that!!!
+
+12:46 am joshuavorbis
+
+an single-use weapon
+
+12:46 am crosshair
+
+ty for the list folks
+
+12:47 am grannyrose
+
+i could understand that gemplifier
+
+i'm shoor it was one of those 'safe' words.
+
+12:48 am sprite
+
+hunger is back. I better go start dinner... and then find a log with food in it to munch on :)
+
+12:49 am grannyrose
+
+okay, dearie, have a good night.
+
+still here again.
+
+kisses to you.
+
+12:50 am grannyrose
+
+de5 x2, di4 x 3 and du6 x 2 pls.
+
+12:50 am marimaretta
+
+grannyrose -- comes from the car a laborer drives - and i only know because i had a lot of construction workers in my life
+
+12:52 am grannyrose
+
+na4/6 x 2 and na4/5 x 3 pls.
+
+12:53 am grannyrose
+
+a huge ta to marimaretta.
+
+12:56 am carleekat
+
+and......
+
+1:00 am sprite
+
+too bad, so sad... and I logged off without saying goodnight to GR and others. *eek* will do that next time.
+
+1:01 am Atalante
+
+at least you still are a really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really good friend!
+
+1:01 am sprite
+
+back from dinner and replenishing fluids.
+
+1:02 am sprite
+
+yes, Atalante, although most people seem to shorten that to 'really great friend' :)
+
+1:02"
+a cool sunglasses badger playing an electric guitar realistic photo ,iphone case.
