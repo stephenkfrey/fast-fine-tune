@@ -1,0 +1,442 @@
+prompt,completion
+"Based on the book of the same name, what are the requirements for “Parallel Distributed Processing”?","- A set of processing units
+- A state of activation
+- An output function for each unit
+- A pattern of connectivity among units
+- A propagation rule for propagating patterns of activities through the network of connectivities
+- An activation rule for combining the inputs impinging on a unit with the current state of that unit to produce a new level of activation for the unit
+- A learning rule whereby patterns of connectivity are modified by experience
+- An environment within which the system must operate."
+What were the two theoretical misunderstandings that held back the field of neural networks?,"In 1969, Marvin Minsky and Seymour Papert demonstrated in their book, “Perceptrons”, that a single layer of artificial neurons cannot learn simple, critical mathematical functions like XOR logic gate. While they subsequently demonstrated in the same book that additional layers can solve this problem, only the first insight was recognized, leading to the start of the first AI winter.
+In the 1980’s, models with two layers were being explored. Theoretically, it is possible to approximate any mathematical function using two layers of artificial neurons. However, in practices, these networks were too big and too slow. While it was demonstrated that adding additional layers improved performance, this insight was not acknowledged, and the second AI winter began. In this past decade, with increased data availability, and improvements in computer hardware (both in CPU performance but more importantly in GPU performance), neural networks are finally living up to its potential."
+What is a GPU?,"GPU stands for Graphics Processing Unit (also known as a graphics card). Standard computers have various components like CPUs, RAM, etc. CPUs, or central processing units, are the core units of all standard computers, and they execute the instructions that make up computer programs. GPUs, on the other hand, are specialized units meant for displaying graphics, especially the 3D graphics in modern computer games. The hardware optimizations used in GPUs allow it to handle thousands of tasks at the same time. Incidentally, these optimizations allow us to run and train neural networks hundreds of times faster than a regular CPU."
+Why is it hard to use a traditional computer program to recognize images in a photo?,"For us humans, it is easy to identify images in a photos, such as identifying cats vs dogs in a photo. This is because, subconsciously our brains have learned which features define a cat or a dog for example. But it is hard to define set rules for a traditional computer program to recognize a cat or a dog. Can you think of a universal rule to determine if a photo contains a cat or dog? How would you encode that as a computer program? This is very difficult because cats, dogs, or other objects, have a wide variety of shapes, textures, colors, and other features, and it is close to impossible to manually encode this in a traditional computer program."
+What term do we normally use in deep learning for what Samuel called “Weights”?,"We instead use the term parameters. In deep learning, the term “weights” has a separate meaning. (The neural network has various parameters that we fit our data to. As shown in upcoming chapters, the two types of neural network parameters are weights and biases)."
+Why is it hard to understand why a deep learning model makes a particular prediction?,"This is a highly-researched topic known as interpretability of deep learning models. Deep learning models are hard to understand in part due to their “deep” nature. Think of a linear regression model. Simply, we have some input variables/data that are multiplied by some weights, giving us an output. We can understand which variables are more important and which are less important based on their weights. A similar logic might apply for a small neural network with 1-3 layers. However, deep neural networks have hundreds, if not thousands, of layers. It is hard to determine which factors are important in determining the final output. The neurons in the network interact with each other, with the outputs of some neurons feeding into other neurons. Altogether, due to the complex nature of deep learning models, it is very difficult to understand why a neural network makes a given prediction.
+However, in some cases, recent research has made it easier to better understand a neural network’s prediction. For example, as shown in this chapter, we can analyze the sets of weights and determine what kind of features activate the neurons. When applying CNNs to images, we can also see which parts of the images highly activate the model. We will see how we can make our models interpretable later in the book."
+What is the name of the theorem that a neural network can solve any mathematical problem to any level of accuracy?,"The universal approximation theorem states that neural networks can theoretically represent any mathematical function. However, it is important to realize that practically, due to the limits of available data and computer hardware, it is impossible to practically train a model to do so. But we can get very close!."
+What do you need in order to train a model?,"You will need an architecture for the given problem. You will need data to input to your model. For most use-cases of deep learning, you will need labels for your data to compare your model predictions to. You will need a loss function that will quantitatively measure the performance of your model. And you need a way to update the parameters of the model in order to improve its performance (this is known as an optimizer)."
+How could a feedback loop impact the rollout of a predictive policing model?,"In a predictive policing model, we might end up with a positive feedback loop, leading to a highly biased model with little predictive power. For example, we may want a model that would predict crimes, but we use information on arrests as a proxy . However, this data itself is slightly biased due to the biases in existing policing processes. Training with this data leads to a biased model. Law enforcement might use the model to determine where to focus police activity, increasing arrests in those areas. These additional arrests would be used in training future iterations of models, leading to an even more biased model. This cycle continues as a positive feedback loop."
+Do we always have to use 224x224 pixel images with the cat recognition model?,"No we do not. 224x224 is commonly used for historical reasons. You can increase the size and get better performance, but at the price of speed and memory consumption."
+What is the difference between classification and regression?,Classification is focused on predicting a class or category (ex: type of pet). Regression is focused on predicting a numeric quantity (ex: age of pet).
+What is a validation set? What is a test set? Why do we need them?,"The validation set is the portion of the dataset that is not used for training the model, but for evaluating the model during training, in order to prevent overfitting. This ensures that the model performance is not due to “cheating” or memorization of the dataset, but rather because it learns the appropriate features to use for prediction. However, it is possible that we overfit the validation data as well. This is because the human modeler is also part of the training process, adjusting hyperparameters (see question 32 for definition) and training procedures according to the validation performance. Therefore, another unseen portion of the dataset, the test set, is used for final evaluation of the model. This splitting of the dataset is necessary to ensure that the model generalizes to unseen data."
+What will fastai do if you don’t provide a validation set?,fastai will automatically create a validation dataset. It will randomly take 20% of the data and assign it as the validation set ( 'valid_pct' = '0.2' ).
+Can we always use a random sample for a validation set? Why or why not?,"A good validation or test set should be representative of new data you will see in the future. Sometimes this isn’t true if a random sample is used. For example, for time series data, selecting sets randomly does not make sense. Instead, defining different time periods for the train, validation, and test set is a better approach."
+What is overfitting? Provide an example.,"Overfitting is the most challenging issue when it comes to training machine learning models. Overfitting refers to when the model fits too closely to a limited set of data but does not generalize well to unseen data. This is especially important when it comes to neural networks, because neural networks can potentially “memorize” the dataset that the model was trained on, and will perform abysmally on unseen data because it didn’t “memorize” the ground truth values for that data. This is why a proper validation framework is needed by splitting the data into training, validation, and test sets."
+What is a metric? How does it differ to “loss”?,"A metric is a function that measures quality of the model’s predictions using the validation set. This is similar to the ­ loss , which is also a measure of performance of the model. However, loss is meant for the optimization algorithm (like SGD) to efficiently update the model parameters, while metrics are human-interpretable measures of performance. Sometimes, a metric may also be a good choice for the loss."
+How can pretrained models help?,"Pretrained models have been trained on other problems that may be quite similar to the current task. For example, pretrained image recognition models were often trained on the ImageNet dataset, which has 1000 classes focused on a lot of different types of visual objects. Pretrained models are useful because they have already learned how to handle a lot of simple features like edge and color detection. However, since the model was trained for a different task than already used, this model cannot be used as is."
+What is the “head” of a model?,"'crop' is the default 'Resize()' method, and it  crops  the images to fit a square shape of the size requested, using the full width or height. This can result in losing some important details. For instance, if we were trying to recognize the breed of dog or cat, we may end up cropping out a key part of the body or the face necessary to distinguish between similar breeds.
+'pad' is an alternative 'Resize()' method, which pads the matrix of the image’s pixels with zeros (which shows as black when viewing the images). If we pad the images then we have a whole lot of empty space, which is just wasted computation for our model, and results in a lower effective resolution for the part of the image we actually use.
+
+'squish' is another alternative 'Resize()' method, which can either squish or stretch the image. This can cause the image to take on an unrealistic shape, leading to a model that learns that things look different to how they actually are, which we would expect to result in lower accuracy.
+
+Which resizing method to use therefore depends on the underlying problem and dataset. For example, if the features in the dataset images take up the whole image and cropping may result in loss of information, squishing or padding may be more useful.
+Another better method is 'RandomResizedCrop', in which we crop on a randomly selected region of the image. So every epoch, the model will see a different part of the image and will learn accordingly."
+What kinds of features do the early layers of a CNN find? How about the later layers?,"Earlier layers learn simple features like diagonal, horizontal, and vertical edges. Later layers learn more advanced features like car wheels, flower petals, and even outlines of animals."
+Are image models only useful for photos?,"No. Image models can be useful for other types of images like sketches, medical data, etc.
+However, a lot of information can be represented as images . For example, a sound can be converted into a spectrogram, which is a visual interpretation of the audio. Time series (ex: financial data) can be converted to image by plotting on a graph. Even better, there are various transformations that generate images from time series, and have achieved good results for time series classification. There are many other examples, and by being creative, it may be possible to formulate your problem as an image classification problem, and use pretrained image models to obtain state-of-the-art results!."
+What is an “architecture”?,The architecture is the template or structure of the model we are trying to fit. It defines the mathematical model we are trying to fit.
+What is segmentation?,"At its core, segmentation is a pixelwise classification problem. We attempt to predict a label for every single pixel in the image. This provides a mask for which parts of the image correspond to the given label."
+What is y_range used for? When do we need it?,"y_range is being used to limit the values predicted when our problem is focused on predicting a numeric value in a given range (ex: predicting movie ratings, range of 0.5-5)."
+What are “hyperparameters”?,"Training models requires various other parameters that define how the model is trained. For example, we need to define how long we train for, or what learning rate (how fast the model parameters are allowed to change) is used. These sorts of parameters are hyperparameters."
+What’s the best way to avoid failures when using AI in an organization?,"Key things to consider when using AI in an organization:
+
+Make sure a training, validation, and testing set is defined properly in order to evaluate the model in an appropriate manner.
+Try out a simple baseline, which future models should hopefully beat. Or even this simple baseline may be enough in some cases."
+Where do text models currently have a major deficiency?,"Text models can generate context-appropriate text (like replies or imitating author style). However, text models still struggle with correct responses. Given factual information (such as a knowledge base), it is still hard to generate responses that utilizes this information to generate factually correct responses, though the text can seem very compelling. This can be very dangerous, as the layman may not be able to evaluate the factual accuracy of the generated text."
+What are the possible negative societal implications of text generation models?,"The ability for text generation models to generate context-aware, highly compelling responses can be used at a massive scale to spread disinformation (“fake news”) and encourage conflict.
+Models reinforce bias (like gender bias, racial bias) in training data and create a vicious cycle of biased outputs."
+"In situations where a model might make mistakes, and those mistakes could be harmful, what is a good alternative to automating a process?","The predictions of the model could be reviewed by human experts for them to evaluate the results and determine what is the best next step. This is especially true for applying machine learning for medical diagnoses. For example, a machine learning model for identifying strokes in CT scans can alert high priority cases for expedited review, while other cases are still sent to radiologists for review. Or other models can also augment the medical professional’s abilities, reducing risk but still improving efficiency of the workflow. For example, deep learning models can provide useful measurements for radiologists or pathologists."
+What kind of tabular data is deep learning particularly good at?,"Deep learning is good at analyzing tabular data that includes natural language, or high cardinality categorical columns (containing larger number of discrete choices like zip code)."
+What’s a key downside of directly using a deep learning model for recommendation systems?,"Machine learning approaches for recommendation systems will often only tell what products a user might like, and may not be recommendations that would be helpful to the user. For example, if a user is familiar with other books from the same author, it isn’t helpful to recommend those products even though the user bought the author’s book. Or, recommending products a user may have already purchased."
+How do the steps of the Drivetrain approach map to a recommendation system?,"The  objective  of a recommendation engine is to drive additional sales by surprising and delighting the customer with recommendations of items they would not have purchased without the recommendation. The  lever  is the ranking of the recommendations. New  data  must be collected to generate recommendations that will  cause new sales . This will require conducting many randomized experiments in order to collect data about a wide range of recommendations for a wide range of customers. This is a step that few organizations take; but without it, you don’t have the information you need to actually optimize recommendations based on your true objective (more sales!)."
+What is 'DataLoaders'?,The 'DataLoaders' class is the class that passes the data to the fastai model. It is essentially a class that stores the required 'Dataloader' objects (usually for train and validation sets).
+How do we ensure a random split always gives the same validation set?,"It turns out it is impossible for our computers to generate truly random numbers. Instead, they use a process known as a pseudo-random generator. However, this process can be controlled using a random seed. By setting a random seed value, the pseudo-random generator will generate the “random” numbers in a fixed manner and it will be the same for every run. Using a random seed, we can generate a random split that gives the same validation set always."
+What letters are often used to signify the independent and dependent variables?,`x` is independent. `y` is dependent.
+"What’s the difference between 'crop', 'pad', and 'squish' 'Resize()' approaches? When might you choose one over the other?","crop' is the default 'Resize()' method, and it  crops  the images to fit a square shape of the size requested, using the full width or height. This can result in losing some important details. For instance, if we were trying to recognize the breed of dog or cat, we may end up cropping out a key part of the body or the face necessary to distinguish between similar breeds.
+'pad' is an alternative 'Resize()' method, which pads the matrix of the image’s pixels with zeros (which shows as black when viewing the images). If we pad the images then we have a whole lot of empty space, which is just wasted computation for our model, and results in a lower effective resolution for the part of the image we actually use.
+
+'squish' is another alternative 'Resize()' method, which can either squish or stretch the image. This can cause the image to take on an unrealistic shape, leading to a model that learns that things look different to how they actually are, which we would expect to result in lower accuracy.
+
+Which resizing method to use therefore depends on the underlying problem and dataset. For example, if the features in the dataset images take up the whole image and cropping may result in loss of information, squishing or padding may be more useful.
+Another better method is 'RandomResizedCrop', in which we crop on a randomly selected region of the image. So every epoch, the model will see a different part of the image and will learn accordingly."
+What is data augmentation? Why is it needed?,"Data augmentation refers to creating random variations of our input data, such that they appear different, but not so different that it changes the meaning of the data. Examples include flipping, rotation, perspective warping, brightness changes, etc. Data augmentation is useful for the model to better understand the basic concept of what an object is and how the objects of interest are represented in images. Therefore, data augmentation allows machine learning models to generalize . This is especially important when it can be slow and expensive to label data."
+What is the difference between 'item_tfms' and 'batch_tfms'?,"'item_tfms' are transformations applied to a single data sample 'x' on the CPU. 'Resize()' is a common transform because the mini-batch of input images to a cnn must have the same dimensions. Assuming the images are RGB with 3 channels, then 'Resize'() as item_tfms will make sure the images have the same width and height.
+'batch_tfms' are applied to batched data samples (aka individual samples that have been collated into a mini-batch) on the GPU. They are faster and more efficient than 'item_tfms'. A good example of these are the ones provided by 'aug_transforms()'. Inside are several batch-level augmentations that help many models."
+What is a confusion matrix?,"A class confusion matrix is a representation of the predictions made vs the correct labels. The rows of the matrix represent the actual labels while the columns represent the predictions. Therefore, the number of images in the diagonal elements represent the number of correctly classified images, while the off-diagonal elements are incorrectly classified images. Class confusion matrices provide useful information about how well the model is doing and which classes the model might be confusing ."
+What does 'export' save do?,"'export' saves both the architecture, as well as the trained parameters of the neural network architecture. It also saves how the 'DataLoaders' are defined."
+What are IPython widgets?,"IPython widgets are JavaScript and Python combined functionalities that let us build and interact with GUI components directly in a Jupyter notebook. An example of this would be an upload button, which can be created with the Python function 'widgets.FileUpload()'."
+When might you want to use CPU for deployment? When might GPU be better?,"GPUs are best for doing identical work in parallel. If you will be analyzing single pieces of data at a time (like a single image or single sentence), then CPUs may be more cost effective instead, especially with more market competition for CPU servers versus GPU servers. GPUs could be used if you collect user responses into a batch at a time, and perform inference on the batch. This may require the user to wait for model predictions. Additionally, there are many other complexities when it comes to GPU inference, like memory management and queuing of the batches."
+"What are the downsides of deploying your app to a server, instead of to a client (or edge) device such as a phone or PC?","The application will require network connection, and there will be extra network latency time when submitting input and returning results. Additionally, sending private data to a network server can lead to security concerns.
+On the flip side deploying a model to a server makes it easier to iterate and roll out new versions of a model. This is because you as a developer have full control over the server environment and only need to do it once rather than having to make sure that all the endpoints (phones, PCs) upgrade their version individually."
+What is “out of domain data”?,"“Out of domain data” is data that is fundamentally different in some aspect compared to the model’s training data. For example, an object detector that was trained exclusively with outside daytime photos is given a photo taken at night."
+What is “domain shift”?,"“Domain shift” is when the type of data changes gradually over time. For example, an insurance company is using a deep learning model as part of their pricing algorithm, but over time their customers will be different, with the original training data not being representative of current data, and the deep learning model being applied on effectively out-of-domain data."
+What are the 3 steps in the deployment process?,"Manual process – the model is run in parallel and not directly driving any actions, with humans still checking the model outputs.
+Limited scope deployment – The model’s scope is limited and carefully supervised. For example, doing a geographically and time-constrained trial of model deployment, that is carefully supervised.
+Gradual expansion – The model scope is gradually increased, while good reporting systems are implemented in order to check for any significant changes to the actions taken compared to the manual process (i.e. the models should perform similarly to the humans, unless it is already anticipated to be better)."
+What was the problem with a database of suspected gang members maintained by California law enforcement officials?,"A database of suspected gang members maintained by California law enforcement officials was found to be full of errors, including 42 babies who had been added to the database when they were less than 1 year old (28 of whom were marked as “admitting to being gang members”). In this case, there was no process in place for correcting mistakes or removing people once they’d been added."
+"Why did YouTube’s recommendation algorithm recommend videos of partially clothed children to pedophiles, even although no employee at Google programmed this feature?","The problem here is the centrality of metrics in driving a financially important system. When an algorithm has a metric to optimise, as you have seen, it will do everything it can to optimise that number. This tends to lead to all kinds of edge cases, and humans interacting with a system will search for, find, and exploit these edge cases and feedback loops for their advantage."
+What are the problems with the centrality of metrics?,"When an algorithm has a metric to optimise, as you have seen, it will do everything it can to optimise that number. This tends to lead to all kinds of edge cases, and humans interacting with a system will search for, find, and exploit these edge cases and feedback loops for their advantage."
+How is a greyscale image represented on a computer? How about a color image?,"Images are represented by arrays with pixel values representing the content of the image. For greyscale images, a 2-dimensional array is used with the pixels representing the greyscale values, with a range of 256 integers. A value of 0 would represent white, and a value of 255 represents black, and different shades of greyscale in between. For color images, three color channels (red, green, blue) are typicall used, with a separate 256-range 2D array used for each channel. A pixel value of 0 again represents white, with 255 representing solid red, green, or blue. The three 2-D arrays form a final 3-D array (rank 3 tensor) representing the color image."
+How are the files and folders in the  'MNIST_SAMPLE'  dataset structured? Why?,"There are two subfolders, 'train' and 'valid', the former contains the data for model training, the latter contains the data for validating model performance after each training step. Evaluating the model on the validation set serves two purposes: a) to report a human-interpretable metric such as accuracy (in contrast to the often abstract loss functions used for training), b) to facilitate the detection of overfitting by evaluating the model on a dataset it hasn’t been trained on (in short, an overfitting model performs increasingly well on the training set but decreasingly so on the validation set). Of course, every practicioner could generate their own train/validation-split of the data. Public datasets are usually pre-split to simplifiy comparing results between implementations/publications.
+Each subfolder has two subsubfolders '3' and '7' which contain the '.jpg' files for the respective class of images. This is a common way of organizing datasets comprised of pictures. For the full 'MNIST' dataset there are 10 subsubfolders, one for the images for each digit."
+Explain how the “pixel similarity” approach to classifying digits works.,"In the “pixel similarity” approach, we generate an archetype for each class we want to identify. In our case, we want to distinguish images of 3’s from images of 7’s. We define the archetypical 3 as the pixel-wise mean value of all 3’s in the training set. Analoguously for the 7’s. You can visualize the two archetypes and see that they are in fact blurred versions of the numbers they represent.
+In order to tell if a previously unseen image is a 3 or a 7, we calculate its distance to the two archetypes (here: mean pixel-wise absolute difference). We say the new image is a 3 if its distance to the archetypical 3 is lower than two the archetypical 7."
+What is a list comprehension? Create one now that selects odd numbers from a list and doubles them.,"Lists (arrays in other programming languages) are often generated using a 'for'-loop. A list comprehension is a Pythonic way of condensing the creation of a list using a 'for'-loop into a single expression. List comprehensions will also often include if clauses for filtering.
+```lst_in = range(10)
+lst_out = [2*el for el in lst_in if el%2==1]
+# is equivalent to:
+lst_out = []
+for el in lst_in:
+   if el%2==1:
+       lst_out.append(2*el)
+```"
+What is a “rank 3 tensor”?,"The rank of a tensor is the number of dimensions it has. An easy way to identify the rank is the number of indices you would need to reference a number within a tensor. A scalar can be represented as a tensor of rank 0 (no index), a vector can be represented as a tensor of rank 1 (one index, e.g., 'v[i]'), a matrix can be represented as a tensor of rank 2 (two indices, e.g., 'a[i,j]'), and a tensor of rank 3 is a cuboid or a “stack of matrices” (three indices, e.g., 'b[i,j,k]'). In particular, the rank of a tensor is independent of its shape or dimensionality, e.g., a tensor of shape 2x2x2 and a tensor of shape 3x5x7 both have rank 3.
+Note that the term “rank” has different meanings in the context of tensors and matrices (where it refers to the number of linearly independent column vectors)."
+What is the difference between tensor rank and shape?,"Rank is the number of axes or dimensions in a tensor; shape is the size of each axis of a tensor.
+How do you get the rank from the shape?
+The length of a tensor’s shape is its rank.
+So if we have the images of  the 3 folder from the MINST_SAMPLE dataset in a tensor called 'stacked_threes' and we find its shape like this.
+```In [ ]: stacked_threes.shape
+Out[ ]: torch.Size([6131, 28, 28])
+```
+We just need to find its length to know its rank. This is done as follows.
+```In [ ]: len(stacked_threes.shape)
+Out[ ]: 3
+```
+You can also get a tensor’s rank directly with 'ndim' .
+```In [ ]: stacked_threes.ndim
+Out[ ]: 3
+```"
+What are RMSE and L1 norm?,"Root mean square error (RMSE), also called the L2 norm, and mean absolute difference (MAE), also called the L1 norm, are two commonly used methods of measuring “distance”. Simple differences do not work because some difference are positive and others are negative, canceling each other out. Therefore, a function that focuses on the magnitudes of the differences is needed to properly measure distances. The simplest would be to add the absolute values of the differences, which is what MAE is. RMSE takes the mean of the square (makes everything positive) and then takes the square root (undoes squaring)."
+"How can you apply a calculation on thousands of numbers at once, many thousands of times faster than a Python loop?","As loops are very slow in Python, it is best to represent the operations as array operations rather than looping through individual elements. If this can be done, then using NumPy or PyTorch will be thousands of times faster, as they use underlying C code which is much faster than pure Python. Even better, PyTorch allows you to run operations on GPU, which will have significant speedup if there are parallel operations that can be done."
+Create a 3x3 tensor or array containing the numbers from 1 to 9. Double it. Select the bottom right 4 numbers.,"```In [ ]: a = torch.Tensor(list(range(1,10))).view(3,3); print(a)
+    Out [ ]: tensor([[1., 2., 3.],
+                     [4., 5., 6.],
+                     [7., 8., 9.]])
+    In [ ]: b = 2*a; print(b)
+    Out [ ]: tensor([[ 2.,  4.,  6.],
+                     [ 8., 10., 12.],
+                     [14., 16., 18.]])
+    In [ ]:  b[1:,1:]
+    Out []: tensor([[10., 12.],
+                    [16., 18.]])
+```"
+What is broadcasting?,"Scientific/numerical Python packages like NumPy and PyTorch will often implement broadcasting that often makes code easier to write. In the case of PyTorch, tensors with smaller rank are expanded to have the same size as the larger rank tensor. In this way, operations can be performed between tensors with different rank."
+"Are metrics generally calculated using the training set, or the validation set? Why?","Metrics are generally calculated on a validation set. As the validation set is unseen data for the model, evaluating the metrics on the validation set is better in order to determine if there is any overfitting and how well the model might generalize if given similar data."
+What is SGD?,"SGD, or stochastic gradient descent, is an optimization algorithm. Specifically, SGD is an algorithm that will update the parameters of a model in order to minimize a given loss function that was evaluated on the predictions and target. The key idea behind SGD (and many optimization algorithms, for that matter) is that the gradient of the loss function provides an indication of how that loss function changes in the parameter space, which we can use to determine how best to update the parameters in order to minimize the loss function. This is what SGD does."
+Why does SGD use mini batches?,"We need to calculate our loss function (and our gradient) on one or more data points. We cannot calculate on the whole datasets due to compute limitations and time constraints. If we iterated through each data point, however, the gradient will be unstable and imprecise, and is not suitable for training. As a compromise, we calculate the average loss for a small subset of the dataset at a time. This subset is called a mini-batch. Using mini-batches are also more computationally efficient than single items on a GPU."
+What are the 7 steps in SGD for machine learning?,"Initialize the parameters – Random values often work best.
+Calculate the predictions – This is done on the training set, one mini-batch at a time.
+Calculate the loss – The average loss over the minibatch is calculated
+Calculate the gradients – this is an approximation of how the parameters need to change in order to minimize the loss function
+Step the weights – update the parameters based on the calculated weights
+Repeat the process
+Stop – In practice, this is either based on time constraints or usually based on when the training/validation losses and metrics stop improving."
+How do we initialize the weights in a model?,Random weights work pretty well.
+What is “loss”?,"The loss function will return a value based on the given predictions and targets, where lower values correspond to better model predictions."
+Why can’t we always use a high learning rate?,"The loss may “bounce” around (oscillate) or even diverge, as the optimizer is taking steps that are too large, and updating the parameters faster than it should be."
+What is a “gradient”?,The gradients tell us how much we have to change each weight to make our model better. It is essentially a measure of how the loss function changes with changes of the weights of the model (the derivative).
+Do you need to know how to calculate gradients yourself?,"Manual calculation of the gradients are not required, as deep learning libraries will automatically calculate the gradients for you. This feature is known as automatic differentiation. In PyTorch, if 'requires_grad=True', the gradients can be returned by calling the backward method: 'a.backward()'."
+Why can’t we use accuracy as a loss function?,"A loss function needs to change as the weights are being adjusted. Accuracy only changes if the predictions of the model change. So if there are slight changes to the model that, say, improves confidence in a prediction, but does not change the prediction, the accuracy will still not change. Therefore, the gradients will be zero everywhere except when the actual predictions change. The model therefore cannot learn from the gradients equal to zero, and the model’s weights will not update and will not train. A good loss function gives a slightly better loss when the model gives slightly better predictions. Slightly better predictions mean if the model is more confident about the correct prediction. For example, predicting 0.9 vs 0.7 for probability that a MNIST image is a 3 would be slightly better prediction. The loss function needs to reflect that."
+Draw the sigmoid function. What is special about its shape?,Sigmoid function is a smooth curve that squishes all values into values between 0 and 1. Most loss functions assume that the model is outputting some form of a probability or confidence level between 0 and 1 so we use a sigmoid function at the end of the model in order to do this.
+What is the difference between loss and metric?,"The key difference is that metrics drive human understanding and losses drive automated learning. In order for loss to be useful for training, it needs to have a meaningful derivative. Many metrics, like accuracy are not like that. Metrics instead are the numbers that humans care about, that reflect the performance of the model."
+What is the function to calculate new weights using a learning rate?,The optimizer step function.
+What does the DataLoader class do?,The DataLoader class can take any Python collection and turn it into an iterator over many batches.
+Write pseudo-code showing the basic steps taken each epoch for SGD.,"```for x,y in dl:
+   pred = model(x)
+   loss = loss_func(pred, y)
+   loss.backward()
+   parameters -= parameters.grad * lr
+```"
+"Create a function which, if passed two arguments [1,2,3,4] and ‘abcd’ , returns [(1, ‘a’), (2, ‘b’), (3, ‘c’), (4, ‘d’)] . What is special about that output data structure?","```def func(a,b): return list(zip(a,b))
+```
+This data structure is useful for machine learning models when you need lists of tuples where each tuple would contain input data and a label."
+What does view do in PyTorch?,It changes the shape of a Tensor without changing its contents.
+What are the “bias” parameters in a neural network? Why do we need them?,"Without the bias parameters, if the input is zero, the output will always be zero. Therefore, using bias parameters adds additional flexibility to the model."
+What does the @ operator do in python?,This is the matrix multiplication operator.
+What does the backward method do?,This method returns the current gradients.
+Why do we have to zero the gradients?,"PyTorch will add the gradients of a variable to any previously stored gradients. If the training loop function is called multiple times, without zeroing the gradients, the gradient of current 'loss' would be added to the previously stored gradient value."
+What information do we have to pass to Learner ?,"We need to pass in the DataLoaders, the model, the optimization function, the loss function, and optionally any metrics to print."
+Show python or pseudo-code for the basic steps of a training loop.,"```def train_epoch(model, lr, params):
+    for xb,yb in dl:
+        calc_grad(xb, yb, model)
+        for p in params:
+            p.data -= p.grad*lr
+            p.grad.zero_()
+for i in range(20):
+    train_epoch(model, lr, params)
+```"
+What is “ReLU”? Draw a plot of it for values from -2 to +2 .,ReLU just means “replace any negative numbers with zero”. It is a commonly used activation function.
+What is an “activation function”?,"The activation function is another function that is part of the neural network, which has the purpose of providing non-linearity to the model. The idea is that without an activation function, we just have multiple linear functions of the form 'y=mx+b'. However, a series of linear layers is equivalent to a single linear layer, so our model can only fit a line to the data. By introducing a non-linearity in between the linear layers, this is no longer true. Each layer is somewhat decoupled from the rest of the layers, and the model can now fit much more complex functions. In fact, it can be mathematically proven that such a model can solve any computable problem to an arbitrarily high accuracy, if the model is large enough with the correct weights. This is known as the universal approximation theorem."
+What’s the difference between F.relu and nn.ReLU ?,"F.relu is a Python function for the relu activation function. On the other hand, nn.ReLU is a PyTorch module. This means that it is a Python class that can be called as a function in the same way as F.relu."
+The universal approximation theorem shows that any function can be approximated as closely as needed using just one nonlinearity. So why do we normally use more?,"There are practical performance benefits to using more than one nonlinearity. We can use a deeper model with less number of parameters, better performance, faster training, and less compute/memory requirements."
+"Why do we first resize to a large size on the CPU, and then to a smaller size on the GPU?","This concept is known as presizing. Data augmentation is often applied to the images and in fastai it is done on the GPU. However, data augmentation can lead to degradation and artifacts, especially at the edges. Therefore, to minimize data destruction, the augmentations are done on a larger image, and then RandomResizeCrop is performed to resize to the final image size."
+"What are the two ways in which data is most commonly provided, for most deep learning datasets?","Individual files representing items of data, such as text documents or images.
+A table of data, such as in CSV format, where each row is an item, each row which may include filenames providing a connection between the data in the table and data in other formats such as text documents and images."
+Give two examples of ways that image transformations can degrade the quality of the data.,"Rotation can leave empty areas in the final image
+Other operations may require interpolation which is based on the original image pixels but are still of lower image quality."
+Should you hold off on training a model until you have thoroughly cleaned your data?,No. It is best to create a baseline model as soon as possible.
+What are the two pieces that are combined into cross entropy loss in PyTorch?,Cross Entropy Loss is a combination of a Softmax function and Negative Log Likelihood Loss.
+What are the two properties of activations that softmax ensures? Why is this important?,"It makes the outputs for the classes add up to one. This means the model can only predict one class. Additionally, it amplifies small changes in the output activations, which is helpful as it means the model will select a label with higher confidence (good for problems with definite labels)."
+When might you want your activations to not have these two properties?,When you have multi-label classification problems (more than one label possible).
+Why can’t we use torch.where to create a loss function for datasets where our label can have more than two categories?,"Because 'torch.where' can only select between two possibilities while for multi-class classification, we have multiple possibilities."
+What is the value of log(-2)? Why?,"This value is not defined. The logarithm is the inverse of the exponential function, and the exponential function is always positive no matter what value is passed. So the logarithm is not defined for negative values."
+What are two good rules of thumb for picking a learning rate from the learning rate finder?,"Either one of these two points should be selected for the learning rate:
+
+
+one order of magnitude less than where the minimum loss was achieved (i.e. the minimum divided by 10)
+
+
+the last point where the loss was clearly decreasing."
+What two steps does the fine_tune method do?,"Train the new head (with random weights) for one epoch
+Unfreeze all the layers and train them all for the requested number of epochs."
+"In Jupyter notebook, how do you get the source code for a method or function?",Use '??' after the function ex: 'DataBlock.summary??'.
+What are discriminative learning rates?,"Discriminative learning rates refers to the training trick of using different learning rates for different layers of the model. This is commonly used in transfer learning. The idea is that when you train a pretrained model, you don’t want to drastically change the earlier layers as it contains information regarding simple features like edges and shapes. But later layers may be changed a little more as it may contain information regarding facial feature or other object features that may not be relevant to your task. Therefore, the earlier layers have a lower learning rate and the later layers have higher learning rates."
+How is a Python slice object interpreted when passed as a learning rate to fastai?,"The first value of the slice object is the learning rate for the earliest layer, while the second value is the learning rate for the last layer. The layers in between will have learning rates that are multiplicatively equidistant throughout that range."
+Why is early stopping a poor choice when using one cycle training?,"If early stopping is used, the training may not have time to reach lower learning rate values in the learning rate schedule, which could easily continue to improve the model. Therefore, it is recommended to retrain the model from scratch and select the number of epochs based on where the previous best results were found."
+What is the difference between resnet 50 and resnet101?,"The number 50 and 101 refer to the number of layers in the models. Therefore, ResNet101 is a larger model with more layers versus ResNet50. These model variants are commonly as there are ImageNet-pretrained weights available."
+What does to_fp16 do?,"This enables mixed-precision training, in which less precise numbers are used in order to speed up training."
+how could multi-label classification improve the usability of the bear classifier?,"This would allow for the classification of no bears present. Otherwise, a mutli-class classification model will predict the presence of a bear even if it’s not there (unless a separate class is explicitly added)."
+How do we encode the dependent variable in a multi-label classification problem?,"This is encoded as a one-hot encoded vector. Essentially, this means we have a zero vector of the same length of the number of classes, and ones are present at the indices for the classes that are present in the data."
+How do you access the rows and columns of a DataFrame as if it was a matrix?,"You can use '.iloc'. For example, 'df.iloc[10,10]' will select the element in the 10th row and 10th column as if the DataFrame is a matrix."
+How do you get a column by name from a DataFrame,This is very simple. You can just index it! Ex: 'df['column_name']'.
+What is the difference between a dataset and DataLoader?,"A 'Dataset' is a collection which returns a tuple of your independent and dependent variable for a single item. 'DataLoader' is an extension of the 'Dataset' functionality. It is an iterator which provides a stream of mini batches, where each mini batch is a couple of a batch of independent variables and a batch of dependent variables."
+What does a Datasets object normally contain?,A training set and validation set.
+What does a DataLoaders object normally contain?,A trainin dataloader and validation dataloader.
+What does lambda do in Python?,"Lambdas are shortcuts for writing functions (writing one-liner functions). It is great for quick prototyping and iterating, but since it is not serializable, it cannot be used in deployment and production."
+What are the methods to customise how the independent and dependent variables are created with the data block API?,"get_x and get_y
+
+get_x is used to specify how the independent variables are created.
+get_y is used to specify how the datapoints are labelled."
+Why is softmax not an appropriate output activation function when using a one hot encoded target?,"Softmax wants to make the model predict only a single class, which may not be true in a multi-label classification problem. In multi-label classification problems, the input data could have multiple labels or even no labels."
+Why is nll_loss not an appropriate loss function when using a one hot encoded target?,"Again, nll_loss only works for when the model only needs to predict one class, which is not the case here."
+What is the difference between nn.BCELoss and nn.BCEWithLogitsLoss?,"nn.BCELoss does not include the initial sigmoid. It assumes that the appropriate activation function (ie. the sigmoid) has already been applied to the predictions. nn.BCEWithLogitsLoss, on the other hand, does both the sigmoid and cross entropy in a single function."
+Why can’t we use regular accuracy in a multi-label problem?,"The regular accuracy function assumes that the final model-predicted class is the one with the highest activation. However, in multi-label problems, there can be multiple labels. Therefore, a threshold for the activations needs to be set for choosing the final predicted classes based on the activations, for comparing to the target claases."
+When is it okay to tune an hyper-parameter on the validation set?,"It is okay to do so when the relationship between the hyper-parameter and the metric being observed is smooth. With such a smooth relationship, we would not be picking an inappropriate outlier."
+How is y_range implemented in fastai? (See if you can implement it yourself and test it without peaking!),"y_range is implemented using sigmoid_range in fastai.
+'def sigmoid_range(x, lo, hi): return x.sigmoid() * (hi-lo) + lo'."
+What is a regression problem? What loss function should you use for such a problem?,"In a regression problem, the dependent variable or labels we are trying to predict are continuous values. For such problems, the mean squared error loss function is used."
+What do you need to do to make sure the fastai library applies the same data augmentation to your inputs images and your target point coordinates?,"You need to use the correct DataBlock. In this case, it is the 'PointBlock'. This DataBlock automatically handles the application data augmentation to the input images and the target point coordinates."
+What problem does collaborative filtering solve?,It solves the problem of predicting the interests of users based on the interests of other users and recommending items based on these interests.
+How does it solve it?,The key idea of collaborative filtering is 'latent factors'. The idea is that the model can tell what kind of items you may like (ex: you like sci-fi movies/books) and these kinds of factors are learned (via basic gradient descent) based on what items other users like.
+Why might a collaborative filtering predictive model fail to be a very useful recommendation system?,"If there are not many recommendations to learn from, or enough data about the user to provide useful recommendations, then such collaborative filtering systems may not be useful."
+What does a crosstab representation of collaborative filtering data look like?,"In the crosstab representation, the users and items are the rows and columns (or vice versa) of a large matrix with the values filled out based on the user’s rating of the item."
+What is a latent factor? Why is it “latent”?,"As described above, a latent factor are factors that are important for the prediction of the recommendations, but are not explicitly given to the model and instead learned (hence “latent”)."
+What is a dot product? Calculate a dot product manually using pure python with lists.,"A dot product is when you multiply the corresponding elements of two vectors and add them up. If we represent the vectors as lists of the same size, here is how we can perform a dot product:
+```a = [1, 2, 3, 4]
+b = [5, 6, 7, 8]
+dot_product = sum(i[0]*i[1] for i in zip(a,b))
+```"
+What does  'pandas.DataFrame.merge'  do?,It allows you to merge DataFrames into one DataFrame.
+What is an embedding matrix?,"It is what you multiply an embedding with, and in the case of this collaborative filtering problem, is learned through training."
+What is the relationship between an embedding and a matrix of one-hot encoded vectors?,An embedding is a matrix of one-hot encoded vectors that is computationally more efficient.
+Why do we need  'Embedding'  if we could use one-hot encoded vectors for the same thing?,"'Embedding' is computationally more efficient. The multiplication with one-hot encoded vectors is equivalent to indexing into the embedding matrix, and the 'Embedding' layer does this. However, the gradient is calculated such that it is equivalent to the multiplication with the one-hot encoded vectors."
+What does an embedding contain before we start training (assuming we’re not using a prertained model)?,The embedding is randomly initialized.
+"Rewrite the  'DotProduct'  class (without peeking, if possible!) and train a model with it","Code provided in chapter:
+```class DotProduct(Module):
+    def __init__(self, n_users, n_movies, n_factors, y_range=(0,5.5)):
+        self.user_factors = Embedding(n_users, n_factors)
+        self.movie_factors = Embedding(n_movies, n_factors)
+        self.y_range = y_range
+        
+    def forward(self, x):
+        users = self.user_factors(x[:,0])
+        movies = self.movie_factors(x[:,1])
+        return sigmoid_range((users * movies).sum(dim=1), *self.y_range)
+```"
+What is a good loss function to use for MovieLens? Why?,"We can use Mean Squared Error (MSE), which is a perfectly reasonable loss as we have numerical targets for the ratings and it is one possible way of representing the accuracy of the model."
+What would happen if we used  'CrossEntropy'  loss with MovieLens? How would we need to change the model?,"We would need to ensure the model outputs 5 predictions. For example, with a neural network model, we need to change the last linear layer to output 5, not 1, predictions. Then this is passed into the Cross Entropy loss."
+What is the use of bias in a dot product model?,A bias will compensate for the fact that some movies are just amazing or pretty bad. It will also compensate for users who often have more positive or negative recommendations in general.
+What is another name for weight decay?,L2 regularization.
+Write the equation for weight decay.,'loss_with_wd = loss + wd * (parameters**2).sum() '.
+Write the equation for the gradient of weight decay. Why does it help reduce weights?,"We add to the gradients '2*wd*parameters'. This helps create more shallow, less bumpy/sharp surfaces that generalize better and prevents overfitting."
+What is the “bootstrapping problem” in collaborative filtering?,That the model / system cannot make any recommendations or draw any inferences for users or items about which it has not yet gathered sufficient information. It’s also called the cold start problem.
+How could you deal with the bootstrapping problem for new users? For new movies?,"You could solve this by coming up with an average embedding for a user or movie. Or select a particular user/movie to represent the average user/movie. Additionally, you could come up with some questions that could help initialize the embedding vectors for new users and movies."
+How can feedback loops impact collaborative filtering systems?,The recommendations may suffer from representation bias where a small number of people influence the system heavily. E.g.: Highly enthusiastic anime fans who rate movies much more frequently than others may cause the system to recommend anime more often than expected (incl. to non-anime fans).
+"When using a neural network in collaborative filtering, why can we have different number of factors for movie and user?","In this case, we are not taking the dot product but instead concatenating the embedding matrices, so the number of factors can be different."
+Why is there a  'nn.Sequential'  in the  'CollabNN'  model?,"This allows us to couple multiple nn.Module layers together to be used. In this case, the two linear layers are coupled together and the embeddings can be directly passed into the linear layers."
+"What kind of model should be use if we want to add metadata about users and items, or information such as date and time, to a collaborative filter model?","We should use a tabular model, which is discussed in the next chapter!."
+How do entity embeddings reduce memory usage and speed up neural networks?,"Especially for large datasets, representing the data as one-hot encoded vectors can be very inefficient (and also sparse). On the other hand, using entity embeddings allows the data to have a much more memory-efficient (dense) representation of the data. This will also lead to speed-ups for the model."
+What kind of datasets are entity embeddings especially useful for?,It is especially useful for datasets with features that have high levels of cardinality (the features have lots of possible categories). Other methods often overfit to data like this.
+What are the two main families of machine learning algorithms?,"Ensemble of decision trees are best for structured (tabular data)
+Multilayered neural networks are best for unstructured data (audio, vision, text, etc.)."
+Why do some categorical columns need a special ordering in their classes? How do you do this in pandas?,"Ordinal categories may inherently have some order and by using 'set_categories' with the argument 'ordered=True' and passing in the ordered list, this information represented in the pandas DataFrame."
+Summarize what a decision tree algorithm does.,"The basic idea of what a decision tree algorithm does is to determine how to group the data based on “questions” that we ask about the data. That is, we keep splitting the data based on the levels or values of the features and generate predictions based on the average target value of the data points in that group. Here is the algorithm:
+
+Loop through each column of the dataset in turn
+For each column, loop through each possible level of that column in turn
+Try splitting the data into two groups, based on whether they are greater than or less than that value (or if it is a categorical variable, based on whether they are equal to or not equal to that level of that categorical variable)
+Find the average sale price for each of those two groups, and see how close that is to the actual sale price of each of the items of equipment in that group. That is, treat this as a very simple “model” where our predictions are simply the average sale price of the item’s group
+After looping through all of the columns and possible levels for each, pick the split point which gave the best predictions using our very simple model
+We now have two different groups for our data, based on this selected split. Treat each of these as separate datasets, and find the best split for each, by going back to step one for each group
+Continue this process recursively, and until you have reached some stopping criterion for each group — for instance, stop splitting a group further when it has only 20 items in it."
+"Why is a date different from a regular categorical or continuous variable, and how can you preprocess it to allow it to be used in a model?","Some dates are different to others (ex: some are holidays, weekends, etc.) that cannot be described as just an ordinal variable. Instead, we can generate many different categorical features about the properties of the given date (ex: is it a weekday? is it the end of the month?, etc.)."
+"Should you pick a random validation set in the bulldozer competition? If no, what kind of validation set should you pick?","No, the validation set should be as similar to the test set as possible. In this case, the test set contains data from later data, so we should split the data by the dates and include the later dates in the validation set."
+"How are mse, samples, and values calculated in the decision tree drawn in this chapter?","By traversing the tree based on answering questions about the data, we reach the nodes that tell us the average value of the data in that group, the mse, and the number of samples in that group."
+"How do we deal with outliers, before building a decision tree?","Finding out of domain data (Outliers)
+Sometimes it is hard to even know whether your test set is distributed in the same way as your training data or, if it is different, then what columns reflect that difference. There’s actually a nice easy way to figure this out, which is to use a random forest!
+But in this case we don’t use a random forest to predict our actual dependent variable. Instead we try to predict whether a row is in the validation set, or the training set."
+How do we handle categorical variables in a decision tree?,"We convert the categorical variables to integers, where the integers correspond to the discrete levels of the categorical variable. Apart from that, there is nothing special that needs to be done to get it to work with decision trees (unlike neural networks, where we use embedding layers)."
+What is bagging?,"Train multiple models on random subsets of the data, and use the ensemble of models for prediction."
+What is the difference between max_samples and max_features when creating a random forest?,"When training random forests, we train multiple decision trees on random subsets of the data. 'max_samples' defines how many samples, or rows of the tabular dataset, we use for each decision tree. 'max_features' defines how many features, or columns of the tabular dataset, we use for each decision tree."
+"If you increase n_estimators to a very high value, can that lead to overfitting? Why or why not?","A higher 'n_estimators' mean more decision trees are being used. However, since the trees are independent of each other, using higher 'n_estimators' does not lead to overfitting."
+What is <em>out of bag error</em> ?,Only use the models not trained on the row of data when going through the data and evaluating the dataset. No validation set is needed.
+Make a list of reasons why a model’s validation set error might be worse than the OOB error. How could you test your hypotheses?,The major reason could be because the model does not generalize well. Related to this is the possibility that the validation data has a slightly different distribution than the data the model was trained on.
+How can you answer each of these things with a random forest? How do they work?:,"How confident are we in our projections using a particular row of data?
+Look at standard deviation between the estimators
+For predicting with a particular row of data, what were the most important factors, and how did they influence that prediction?
+Using the 'treeinterpreter' package to check how the prediction changes as it goes through the tree, adding up the contributions from each split/feature. Use waterfall plot to visualize.
+Which columns are the strongest predictors?
+Look at feature importance
+How do predictions vary, as we vary these columns?
+Look at partial dependence plots."
+What is the <em>extrapolation problem</em> ?,"Hard for a model to extrapolate to data that’s outside the domain of the training data. This is particularly important for random forests. On the other hand, neural networks have underlying Linear layers so it could potentially generalize better."
+How can you tell if your test or validation set is distributed in a different way to your training set?,"We can do so by training a model to classify if the data is training or validation data. If the data is of different distributions (out-of-domain data), then the model can properly classify between the two datasets."
+"Why do we make saleElapsed a continuous variable, even although it has less than 9000 distinct values?","This is a variable that changes over time, and since we want our model to extrapolate for future results, we make this a continuous variable."
+What is boosting?,"We train a model that underfits the dataset, and train subsequent models that predicts the error of the original model. We then add the predictions of all the models to get the final prediction."
+How could we use embeddings with a random forest? Would we expect this to help?,"Entity embeddings contains richer representations of the categorical features and definitely can improve the performance of other models like random forests. Instead of passing in the raw categorical columns, the entity embeddings can be passed into the random forest model."
+Why might we not always use a neural net for tabular modeling?,"We might not use them because they are the hardest to train and longest to train, and less well-understood. Instead, random forests should be the first choice/baseline, and neural networks could be tried to improve these results or add to an ensemble."
+What is a language model?,A language model is a self-supervised model that tries to predict the next word of a given passage of text.
+Why is a language model considered self-supervised learning?,"There are no labels (ex: sentiment) provided during training. Instead, the model learns to predict the next word by reading lots of provided text with no labels."
+What are self-supervised models usually used for?,"Sometimes, they are used by themselves. For example, a language model can be used for autocomplete algorithms! But often, they are used as a pre-trained model for transfer learning."
+Why do we fine-tune language models?,"We can fine-tune the language model on the corpus of the desired downstream task, since the original pre-trained language model was trained on a corpus that is slightly different than the one for the current task."
+What are the three steps to create a state-of-the-art text classifier?,"Train a language model on a large corpus of text (already done for ULM-FiT by Sebastian Ruder and Jeremy!)
+Fine-tune the language model on text classification dataset
+Fine-tune the language model as a text classifier instead."
+"How do the 50,000 unlabeled movie reviews help create a better text classifier for the IMDb dataset?","By learning how to predict the next word of a movie review, the model better understands the language style and structure of the text classification dataset and can, therefore, perform better when fine-tuned as a classifier."
+What are the three steps to prepare your data for a language model?,"Tokenization
+Numericalization
+Language model DataLoader."
+What is tokenization? Why do we need it?,"Tokenization is the process of converting text into a list of words. It is not as simple as splitting on the spaces. Therefore, we need a tokenizer that deals with complicated cases like punctuation, hypenated words, etc."
+Name three different approaches to tokenization.,"Word-based tokenization
+Subword-based tokenization
+Character-based tokenization."
+What is ‘xxbos’?,This is a special token added by fastai that indicated the beginning of the text.
+List 4 rules that fastai applies to text during tokenization.,"Here are all the rules:
+
+
+'fix_html' :: replace special HTML characters by a readable version (IMDb reviews have quite a few of them for instance) ;
+
+'replace_rep' :: replace any character repeated three times or more by a special token for repetition (xxrep), the number of times it’s repeated, then the character ;
+
+'replace_wrep' :: replace any word repeated three times or more by a special token for word repetition (xxwrep), the number of times it’s repeated, then the word ;
+
+'spec_add_spaces' :: add spaces around / and # ;
+
+'rm_useless_spaces' :: remove all repetitions of the space character ;
+
+'replace_all_caps' :: lowercase a word written in all caps and adds a special token for all caps (xxcap) in front of it ;
+
+'replace_maj' :: lowercase a capitalized word and adds a special token for capitalized (xxmaj) in front of it ;
+
+'lowercase' :: lowercase all text and adds a special token at the beginning (xxbos) and/or the end (xxeos)."
+"Why are repeated characters replaced with a token showing the number of repetitions, and the character that’s repeated?","We can expect that repeated characters could have special or different meaning than just a single character. By replacing them with a special token showing the number of repetitions, the model’s embedding matrix can encode information about general concepts such as repeated characters rather than requiring a separate token for every number of repetitions of every character."
+What is numericalization?,This refers to the mapping of the tokens to integers to be passed into the model.
+Why might there be words that are replaced with the “unknown word” token?,"If all the words in the dataset have a token associated with them, then the embedding matrix will be very large, increase memory usage, and slow down training. Therefore, only words with more than 'min_freq' occurrence are assigned a token and finally a number, while others are replaced with the “unknown word” token."
+"With a batch size of 64, the first row of the tensor representing the first batch contains the first 64 tokens for the dataset. What does the second row of that tensor contain? What does the first row of the second batch contain? (Careful—students often get this one wrong! Be sure to check your answer against the book website.)","a. The dataset is split into 64 mini-streams (batch size)
+b. Each batch has 64 rows (batch size) and 64 columns (sequence length)
+c. The first row of the first batch contains the beginning of the first mini-stream (tokens 1-64)
+d. The second row of the first batch contains the beginning of the second mini-stream
+e. The first row of the second batch contains the second chunk of the first mini-stream (tokens 65-128)."
+Why do we need padding for text classification? Why don’t we need it for language modeling?,"Since the documents have variable sizes, padding is needed to collate the batch. Other approaches. like cropping or squishing, either to negatively affect training or do not make sense in this context. Therefore, padding is used. It is not required for language modeling since the documents are all concatenated."
+What does an embedding matrix for NLP contain? What is its shape?,"It contains vector representations of all tokens in the vocabulary. The embedding matrix has the size (vocab_size x embedding_size), where vocab_size is the length of the vocabulary, and embedding_size is an arbitrary number defining the number of latent factors of the tokens."
+What is perplexity?,Perplexity is a commonly used metric in NLP for language models. It is the exponential of the loss.
+Why do we have to pass the vocabulary of the language model to the classifier data block?,This is to ensure the same correspondence of tokens to index so the model can appropriately use the embeddings learned during LM fine-tuning.
+What is gradual unfreezing?,This refers to unfreezing one layer at a time and fine-tuning the pretrained model.
+Why is text generation always likely to be ahead of automatic identification of machine generated texts?,The classification models could be used to improve text generation algorithms (evading the classifier) so the text generation algorithms will always be ahead.
+What is “tokenization”? Why do we need it?,"I don’t think the book really dwells with why this is needed, only with some of the challenges. Tokenization is needed because we’re examining texts for patterns. It won’t be possible to find such patterns if we only consider a text at the sentence level, since patterns would only emerge if certain sentences frequently appeared together in sets, and this is a very rare phenomenon.  Needless to say, examining texts in their entirety would be even less productive.  We only find interesting patterns when we examine texts at the level of individual words, substrings, or individual characters."
+What does an embedding matrix for NLP contain? What is its shape?,"It contains vector representations of all tokens in the vocabulary. The embedding matrix has the size (vocab_size x embedding_size), where vocab_size is the length of the vocabulary, and embedding_size is an arbitrary number defining the number of latent factors of the tokens.
+Please let me know if this is wrong or unclear!."
+"With a batch size of 64, the first row of the tensor representing the first batch contains the first 64 tokens for the dataset. What does the second row of that tensor contain? What does the first row of the second batch contain? (Careful—students often get this one wrong! Be sure to check your answer against the book website.)","a. The batch has 64 rows (batch size) and also 64 columns (sequence length)
+b. The second row of the first batch contains the tokens beginning at 1/64th of the dataset
+c. The first row of the second batch continues the first row of the first batch (tokens 65-128)
+I think the example would be a little clearer if we used different values for batch size and sequence length. For example:
+With a batch size of 20, the first row of the tensor representing the first batch contains the first 50 tokens for the dataset.
+a. The dataset is split into 20 mini-streams
+b. Each batch has 20 rows and 50 columns
+c. The first row of the first batch contains the beginning of the first mini-stream (tokens 1-50)
+d. The second row of the first batch contains the beginning of the second mini-stream
+e. The first row of the second batch contains the second chunk of the first mini-stream (tokens 51-100)
+@ilovescience, any thoughts?."
+Why do we say that fastai has a “layered” API? What does it mean?,"fastai is designed following a layered architecture with 4 layers: an applications layer, a high-level API, a mid-level API and a low-level API. These offer higher and higher customizability as you make your way down the layers. The high-level of the API is most likely to be useful to beginners and to practitioners who are mainly in interested in applying pre-existing deep learning methods. It offers concise APIs over four main application areas: vision, text, tabular and time-series analysis, and collaborative filtering. These APIs choose intelligent default values and behaviors based on all available information. The mid-level API provides the core deep learning and data-processing methods for each of these applications, and low-level APIs provide a library of optimized primitives and functional and object-oriented foundations, which allows the mid-level to be developed and customised."
+Why does a 'Transform' have a 'decode' method? What does it do?,"'decode' is used by fastai’s 'show_batch' and 'show_results' , as well as some other inference methods, to convert predictions and mini-batches into a human-understandable representation."
+Why does a 'Transform' have a 'setup' method? What does it do?,"In general, a 'Transform' is an object that behaves like a function and has an optional 'setup' method that will initialize some inner state and an optional 'decode' that will reverse the function."
+How does a 'Transform' work when called on a tuple?,"A special behavior of 'Transform' s is that they always get applied over tuples. In general, our data is always a tuple '(input,target)' (sometimes with more than one input or more than one target). When applying a transform on an item like this, such as 'Resize' , we don’t want to resize the tuple as a whole; instead, we want to resize the input (if applicable) and the target (if applicable) separately. It’s the same for batch transforms that do data augmentation: when the input is an image and the target is a segmentation mask, the transform needs to be applied (the same way) to the input and the target."
+Which methods do you need to implement when writing your own 'Transform'?,"If you want to write a custom transform to apply to your data, the easiest way is to write a function. You will need the 'encode' method and optionally the 'setup' or 'decode' methods."
+"Write a 'Normalize' transform that fully normalizes items (subtract the mean and divide by the standard deviation of the dataset), and that can decode that behavior. Try not to peek!","```class NormalizeMean(Transform):
+    def setups(self, items): self.mean = sum(items)/len(items)
+    def encodes(self, x): return x-self.mean
+    def decodes(self, x): return x+self.mean
+```"
+Write a 'Transform' that does the numericalization of tokenized texts (it should set its vocab automatically from the dataset seen and have a 'decode' method). Look at the source code of fastai if you need help.,"```class Numericalize(Transform):
+    def setups(self, dsets):
+       if dsets is None: return
+       if self.vocab is None:
+           count = dsets.counter if getattr(dsets, 'counter', None) is not None else Counter(p for o in dsets for p in o)
+           if self.special_toks is None and hasattr(dsets, 'special_toks'):
+               self.special_toks = dsets.special_toks
+           self.vocab = make_vocab(count, min_freq=self.min_freq, max_vocab=self.max_vocab, special_toks=self.special_toks)
+           self.o2i = defaultdict(int, {v:k for k,v in enumerate(self.vocab) if v != 'xxfake'})
+    def encodes(self, o): return TensorText(tensor([self.o2i  [o_] for o_ in o]))
+    def decodes(self, o): return L(self.vocab[o_] for o_ in o)
+```"
+What is a 'Pipeline'?,"To compose several transforms together, fastai provides the 'Pipeline' class. We define a 'Pipeline' by passing it a list of 'Transform' s; it will then compose the transforms inside it. When you call 'Pipeline' on an object, it will automatically call the transforms inside, in order."
+What is a 'TfmdLists'?,"Your data is usually a set of raw items (like filenames, or rows in a DataFrame) to which you want to apply a succession of transformations. We just saw that a succession of transformations is represented by a 'Pipeline' in fastai. The class that groups together this 'Pipeline' with your raw items is called 'TfmdLists' ."
+What is a 'Datasets'? How is it different from a 'TfmdLists'?,"'Datasets' will apply two (or more) pipelines in parallel to the same raw object and build a tuple with the result. Like 'TfmdLists' , it will automatically do the setup for us, and when we index into a 'Datasets' , it will return us a tuple with the results of each pipeline. 'TfmdLists' behaves differently in that it returns two separate objects for our inputs and targets."
+Why are 'TfmdLists' and 'Datasets' named with an “s”?,'TfmdLists' and 'Datasets' are named with an “s” because they can handle a training and a validation set with a 'splits' argument.
+How can you build a 'DataLoaders' from a 'TfmdLists' or a 'Datasets'?,You can directly convert a 'TfmdLists' or a 'Datasets' to a 'DataLoaders' object with the 'dataloaders' method.
+How do you pass 'item_tfms' and 'batch_tfms' when building a 'DataLoaders' from a 'TfmdLists' or a 'Datasets'?,"When building a 'DataLoaders' from a 'TfmdLists' or a 'Datasets', 'after_item' is the equivalent of 'item_tfms' in 'DataBlock' whereas 'after_batch' is the equivalent of 'batch_tfms' in 'DataBlock'."
+What do you need to do when you want to have your custom items work with methods like 'show_batch' or 'show_results'?,"'decode' is used by fastai’s 'show_batch' and 'show_results' , as well as some other inference methods, to convert predictions and mini-batches into a human-understandable representation. Your custom items should therefore have a 'decode' method in order for them to work with methods like 'show_batch' or 'show_results'."
+Why can we easily apply fastai data augmentation transforms to the 'SiamesePair' we built?,The mid-level API for data collection gives us two objects ('TfmdLists' and 'Datasets') that can help us easily apply transforms to the 'SiamesePair' we built.
+What do you need to do when you want to have your custom items work with methods like 'show_batch' or 'show_results'?,"You must create a custom type by inherit 'fastuple' and implements a 'show' method.When you call the 'show' method on a 'TfmdLists' or a 'Datasets' object, it will decode items until it reaches a type that contains a 'show' method and use it to show the object.
+I copy the example to show the signature:class SiameseImage(fastuple):
+    def show(self, ctx=None, **kwargs): 
+        img1,img2,same_breed = self
+        if not isinstance(img1, Tensor):
+            if img2.size != img1.size: img2 = img2.resize(img1.size)
+            t1,t2 = tensor(img1),tensor(img2)
+            t1,t2 = t1.permute(2,0,1),t2.permute(2,0,1)
+        else: t1,t2 = img1,img2
+        line = t1.new_zeros(t1.shape[0], t1.shape[1], 10)
+        return show_image(torch.cat([t1,line,t2], dim=2), 
+                          title=same_breed, ctx=ctx)
+'."
+"If the dataset for your project is so big and complicated that working with it takes a significant amount of time, what should you do?","Perhaps create the simplest possible dataset that allow for quick and easy prototyping. For example, Jeremy created a “human numbers” dataset."
+Why do we concatenate the documents in our dataset before creating a language model?,"To create a continuous stream of input/target words, to be able to split it up in batches of significant size."
+"To use a standard fully connected network to predict the fourth word given the previous three words, what two tweaks do we need to make?","Use the same weight matrix for the three layers.
+Use the first word’s embeddings as activations to pass to linear layer, add the second word’s embeddings to the first layer’s output activations, and continues for rest of words."
+How can we share a weight matrix across multiple layers in PyTorch?,"Define one layer in the PyTorch model class, and use them multiple times in the 'forward' method."
+"Write a module which predicts the third word given the previous two words of a sentence, without peeking.","Same code as in chapter:
+```class LMModel1(Module):
+    def __init__(self, vocab_sz, n_hidden):
+        self.i_h = nn.Embedding(vocab_sz, n_hidden)  
+        self.h_h = nn.Linear(n_hidden, n_hidden)     
+        self.h_o = nn.Linear(n_hidden,vocab_sz)
+        
+    def forward(self, x):
+        h = F.relu(self.h_h(self.i_h(x[:,0])))
+        h = h + self.i_h(x[:,1])
+        h = F.relu(self.h_h(h))
+        h = h + self.i_h(x[:,2])
+        h = F.relu(self.h_h(h))
+        return self.h_o(h)
+```"
+Why can maintaining the hidden state in an RNN lead to memory and performance problems? How do we fix this problem?,"Since the hidden state is maintained through every single call of the model, when performing backpropagation with the model, it has to use the gradients from also all the past calls of the model. This can lead to high memory usage. So therefore after every call, the 'detach' method is called to delete the gradient history of previous calls of the model."
+What is BPTT?,"Calculating backpropagation only for the given batch, and therefore only doing backprop for the defined sequence length of the batch."
+What are the downsides of predicting just one output word for each three input words?,"There are words in between that are not being predicted and that is extra information for training the model that is not being used. To solve this, we apply the output layer to every hidden state produced to predict three output words for the three input words (offset by one)."
+Why do we need a custom loss function for  'LMModel4' ?,CrossEntropyLoss expects flattened tensors.
+Why is the training of  'LMModel4'  unstable?,Because this network is effectively very deep and this can lead to very small or very large gradients that don’t train well.
+"In the unrolled representation, we can see that a recurrent neural network actually has many layers. So why do we need to stack RNNs to get better results?",Because only one weight matrix is really being used. So multiple layers can improve this.
+Why should we get better results in an RNN if we call  'detach'  less often? Why might this not happen in practice with a simple RNN?,"Numbers that are just slightly higher or lower than one can lead to the explosion or disappearance of numbers after repeated multiplications. In deep networks, we have repeated matrix multiplications, so this is a big problem."
+Why do vanishing gradients prevent training?,Gradients that are zero can’t contribute to training because they don’t change any weights.
+"Why do we scale the weights with dropout? Is this applied during training, inference, or both?","a. The scale changes if we sum up activations, it makes a difference if all activations are present or they are dropped with probability p. To correct the scale, a division by (1-p) is applied.
+b. In the implementation in the book, it is applied during training
+c. It should be possible in both ways."
+"What is the purpose of this line from  'Dropout' ?:  'if not self.training: return x'
+","When not in training mode, don’t apply dropout."
+Experiment with  'bernoulli_'  to understand how it works.,"a. 'Module.train(), Module.eval()'."
+"Write the equation for activation regularization (in maths or code, as you prefer). How is it different to weight decay?","'loss += alpha * activations.pow(2).mean() '
+It is different by not decreasing the weights but the activations."
+"Write the equation for temporal activation regularization (in maths or code, as you prefer). Why wouldn’t we use this for computer vision problems?","This focuses on making the activations of consecutive tokens to be similar:
+'loss += alpha * activations.pow(2).mean()'."

@@ -1,0 +1,169 @@
+"What is the difference between a CNN and a DNN? 
+"," ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍
+
+ < ‍ > ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ < ‍ > ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ < ‍ > ‍ ‍ ‍ ‍ ‍ ‍ < ‍ > ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ < ‍ > ‍ ‍ ‍ ‍ ‍ < ‍ > ‍ ‍ ‍ ‍ ‍ < ‍ > ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ < ‍ > ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ < ‍ > ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ < ‍ > ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ ‍ < ‍ > ‍ ‍ ‍ ‍ ‍ < ‍ > ‍ ‍ ‍ ‍ ‍ < ‍ > ‍ ‍ ‍ ‍ ‍ < ‍ > ‍ ‍ ‍ ‍ ‍ < ‍ > ‍ ‍ ‍ ‍ ‍ < ‍ > ‍ ‍ ‍ ‍ ‍ < ‍ > ‍ ‍ ‍ ‍ ‍ < ‍"
+"How many roads must a man walk down? 
+","
+**Quotation** > “Before you diagnose yourself with depression or low self-esteem, first make sure that you are not, in fact, just surrounded by assholes.”<
+
+ if> <Ted Weese>
+
+
+#####
+
+
+**Tutor** > = [tOO-ter]<n> = A person who provides assistance to another, usually for a fee< el>
+
+ <Boot> > = [boot]<n> = A wearable shoe< t>
+
+ <…> > = (The ellipsis the author uses to denote omitted text)<l>
+
+ <…> <…> > = (The double ellipsis the author uses to denote omitted text twice)<t> <…> <…> > <…> <…> <…> > <…> <…> <…> <…> > <…> <…> <…> <…> <…> >
+
+<ell> <l> <t> <…> <…> <…> <…> <…> <…> <…> <…> <…> <…> <…> <…> <…> <…> <…> <…> <…> <…> <…> <…> <…> <…> <…> <…> <…> <…> <…> <…> <…> <…> <…> <…> <…> <…> <…> <…> <…> <…> <…> <…> <…> <…> <…> <…> <…> <…> <…> <…> <…> <…> <…> <…> <…> <…> <…> <...> <…> <…> <…> <…> <…><…> <…> <…> <…> <…> <…> <…> <…> <…>' <…> <…> <…> <…> <…> <…> <...> <…> <…> <…> <…> <…> <…> <…> <…> <…> <…> <…> <…> <…> <…> <…> <…> <…> <…> <…> <…"
+"What does `DataLoaders` do in the fast.ai library? 
+","
+The `DataLoaders` library provides a set of generic functions that make it easy to load data into memory and then vectorize it. `DataLoaders` can help make your code more concise and easier to read, especially when you are working with a lot of different datasets or tasks. In fast.ai courses, we have used `DataLoaders` for a wide range of applications, including:
+
+<ul>
+
+
+<li> Load log data from Amazon Athena, so that we can perform basic analytics on user behavior</li>
+
+ <li> Load images from Twitter, in order to perform object detection or segmentation</li> 
+
+<li> Load embedding matrices (e.g. Word2vec and Glove vectors) from disk</li> 
+
+<li> Load CSV files from Amazon S3, so that we can clean them, analyze the contents and compute statistics</li> 
+
+<li> Load sparse matrices or array-valued Python objects from disk, so that they can be used in matrix multiplications</li> <li> Load large sparse matrices from disk, in order to do matrix-vector or matrix-matrix multiplications</li> <li> Generate training data (e.g. sequences of words or images) in memory</li> </ul>
+
+<h2> What types of problems might `DataLoaders` be useful for? </h2>
+
+<p> The applications that we have described previously are just a small sample of the types of tasks that you might be able to accomplish with `DataLoaders`. For example, elsewhere in this course, we will use `DataLoaders` to load and tokenize sentence data from files, in order to perform language modeling and sequence labeling. </p>
+
+<h2> How does `DataLoaders` compare to other libraries? </h2>
+
+ <p> To understand how `DataLoaders` compares to other libraries, it is important to know that there are many ways to load data. Two of the most popular options are the `zip` function, which is built into Python, and the `torch <https://github.com/torch/distro>`_ library, which is one of the most commonly used frameworks for deep learning. In this section, we will highlight some of the main differences between `DataLoaders` and these two existing libraries"
+"Please write python code for a list comprehension
+","  a.   list   comprehensions
+
+   <#> <#> #> <#> #>  <#> <#> <#>  <#> #> <#> <#> <#> <#> <#>  <#> <#> <#> <#> <#> <#> <#> <#> <#> <#> <#> <#>  <#> <#> <#> <#> <#> <#> <#> <#> <#> <#> <#> <#> <#> <#> <#> <#> <#> <#> <#> <#>  <#> <#> <#<
+
+<#> <#> <#> <#> <#> <#> <#> <#> <#> <#> <#> <#> <#> <#> <#> <#> <#> <#> <#> <#>  <#> <#> <#> <#> <#> <#> <#> <#> <#> <#> <#> <#> <#> <#> <#> <#> <#> <#> <#> <#>  <#> <#> <#> <#> <#> <#> <#> <#> <#> <#> <#> <#> <#> <#> <#> <#> <#> <#> <#>  <#> <#> <#> <#> <#> <#> <#> <#> <#> <#> <#> <#> <#> <#> <#> <#> <#> <#> <#>  <#> <#> <#> <#> <#> <#> <#> <#> <#> <#> <#> <#> <#> <#> <#> <#> <#> <#> <#> <#>  <#> <"
+"Please write a bash script to save the output of a terminal command to a json file
+","
+Cool Things You Can Do With This Command:
+
+
+- Save the output of a terminal command to a file
+
+
+- Save the output of a terminal command to a json file
+
+
+- Save the output of a terminal command to a log file
+
+
+- Display the contents of a file in a text editor
+
+
+- Display the contents of a file in a terminal window
+
+
+- View the contents of a file in a browser
+
+
+- Download the contents of a URL to a file
+
+
+- The “>” symbol will redirect the output of a command to a file
+
+ For example, if you want to save the output of the “ls” command to a file called “myfile.txt”, you would type the following command: 
+
+ ++++++++> myfile.txt  <+++
+
+  ++++++++> Click here to view a sample demonstration of this command +++++++++++++++<+++  </+++  </+++ $ ls > myfile.txt <+++  </+++ </+++  </+++  </+++ </+++ Learn More+++>+++<+++ +++<+++ +++<+++ +++<+++ +++<+++ +++<+++ +++<+++ +++<+++ +++<+++ +++<+++ +++<+++ +++<+++ +++<+++ +++<+++ +++<+++ +++<+++ +++<+++ </+++ </+++ </+++ </+++ </+++ </+++ </+++ </+++ </+++ </+++ </+++ </+++ </+++ </+++ ++++>+++<++++++ +++<++++++ +++<++++++ +++<++++++ +++<++++++ +++<++++++ +++<++++++ +++<++++++ +++<++++++ +++<++++++ +++<++++++ +++<++++++ +++<++++++ +++<++++++ +++++<++++++++++ +++++<++++++ ++++++<++++++ ++++++++<++++++ ++++++<++++++ ++++++++»+++<++++++ ++++++<++++++ ++++++++<++++++ ++++++<++++++ +++++++++<++++++ ++++++<++++++ ++++++++++<++++++ ++++++<++++++ ++++++++++<++++++ ++++++<++++++ ++++++++++<++++++ ++++++<++++++ ++++++++++<++++++ ++++++<++++++ ++++++++++<++++++ ++++++<++++++ ++++++++++<++++++ ++++++<++++++ ++++++++++<++++++"
+What are the steps for stochastic gradient descent? ," Question 1 
+What are the steps for stochastic gradient descent?<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+ Question 2 
+(6.1) Last summer, Google announced the release of their new application, Google+ (shown in figure A below). The interface is similar to that of other social networking applications, like Facebook and Twitter, but allows users to share information publicly as well as privately with small groups of people. Many of my family and friends have tried the application, spending hours sharing photos and sending messages to one another. In fact, many of them have stopped using other social networking sites to exclusively use Google+.<br<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
++ A. What is the description of Google+?<br> 
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br> + B. Which features of Google+ allow users to post content publicly?<br> 
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br> <br> + C. To whom do my family and friends send these messages and photos?<br> 
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br> <br> + D. Which of the"

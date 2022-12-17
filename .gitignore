@@ -1,5 +1,3 @@
-notelogs.md
-data/
-outputs/
-test-outputs/
 .env
+
+1-extract-data-fastai-gptchat-to-csv.ipynb
