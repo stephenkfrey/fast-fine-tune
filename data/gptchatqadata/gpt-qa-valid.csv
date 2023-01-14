@@ -1,0 +1,161 @@
+prompt,completion
+"whats the difference between /.bashrc and /.bash_rc
+
+###
+
+"," The `~/.bashrc` and `~/.bash_profile` (or `~/.bash_login` or `~/.profile`) files are both configuration files used by the Bash shell on Unix-based operating systems. The difference between them is that `~/.bashrc` is executed every time you start a new Bash shell (e.g. by opening a new terminal window), while `~/.bash_profile` is only executed when you log in to the system (e.g. when you log in to your computer after starting it up). 
+
+ In general, you should use the `~/.bashrc` file to configure the shell environment for interactive use (e.g. setting environment variables, defining shell functions, and creating aliases for commonly used commands), while the `~/.bash_profile` file should be used for configuring the environment for login shells (e.g. setting the `PATH` variable and configuring the shell prompt). 
+
+ Note that on some systems, the `~/.bash_profile` file may be named `~/.bash_login` or `~/.profile` instead. The exact name and behavior of these files may vary depending on the operating system and version of Bash you are using. ‍ ‍ 
+<+++>
+"
+"what does the `partial` function do in python
+
+###
+
+"," The `partial` function in Python is part of the `functools` module, and is used to create ""partial"" function objects. A partial function is a function that has been ""pre-loaded"" with some of its arguments, so that it can be called with fewer arguments than the original function. 
+
+ For example, let's say you have a function `f(x, y, z)` that takes three arguments. You can use the `partial` function to create a new function `g(y, z)` that is equivalent to `f` with `x` set to a fixed value (e.g. `x = 1`). In other words, calling `g(y, z)` is equivalent to calling `f(1, y, z)`. 
+
+ The `partial` function can be useful in situations where you want to ""fix"" some of the arguments of a function, but still be able to call the function with different values for the remaining arguments. For example, you might use `partial` to create multiple versions of a function with different values for a configuration parameter, or to create a function that can be called with fewer arguments in a callback or event handler. 
+
+ In general, the `partial` function in Python provides a convenient way to create new function objects that are ""pre-loaded"" with some of their arguments. You can refer to the [Python documentation](https://docs.python.org/3/library/functools.html#functools.partial) for more information about how to use this function. ‍ ‍ 
+<+++>
+"
+"what is tanh used for?
+
+###
+
+"," The `tanh` function (short for hyperbolic tangent) is a mathematical function that is commonly used in fields such as physics, engineering, and machine learning. 
+
+ In physics and engineering, `tanh` is often used to model systems or phenomena that exhibit a ""saturation"" effect. For example, the output of an electronic amplifier will typically increase linearly with the input signal up to a certain point, but will then ""saturate"" and remain constant as the input signal continues to increase. The `tanh` function can be used to model this type of nonlinear behavior. 
+
+ In machine learning, `tanh` is often used as an activation function in neural networks. An activation function is a function that is applied to the output of a neuron in a neural network, in order to introduce a nonlinear transformation. The `tanh` function is a popular choice for an activation function, because it is nonlinear and has a smooth, continuous gradient. This makes it easy to train neural networks that use `tanh` as an activation function, using gradient-based optimization algorithms (such as backpropagation). 
+
+ In general, `tanh` is used in a wide range of applications where a smooth, nonlinear function is needed. ‍ ‍ 
+<+++>
+"
+"when do you use an adder vs a multiplier in a machine learning layer?
+
+###
+
+"," In general, you would use an adder in a machine learning layer if you want to compute a sum or linear combination of inputs, and you would use a multiplier if you want to compute a product or nonlinear combination of inputs. 
+
+ For example, in a fully-connected layer (also known as a dense layer) of a neural network, the output of each neuron is typically computed as a weighted sum of the inputs to the layer, followed by an activation function. In this case, you would use an adder to compute the weighted sum of inputs, and a multiplier to apply the weights to the inputs. 
+
+ Similarly, in a convolutional layer of a neural network, the output at each location in the feature map is typically computed as a weighted sum of the inputs in the local neighborhood around that location. In this case, you would use an adder to compute the weighted sum of inputs, and a multiplier to apply the weights to the inputs. 
+
+ On the other hand, in a layer that uses an element-wise product (such as a Hadamard product) to combine inputs, you would use a multiplier to compute the product of the inputs. 
+
+ In general, the choice of whether to use an adder or a multiplier in a machine learning layer will depend on the specific architecture and function of the layer. ‍ ‍ What does the ""stochastic"" in ""stochastic gradient descent"" mean? In the context of machine learning, the term ""stochastic"" refers to something that is randomly determined or probabilistic in nature. 
+
+ In the case of stochastic gradient descent (SGD), the term ""stochastic"" refers to the fact that the optimization algorithm uses a random or probabilistic process to select training examples and compute gradient updates. Specifically, SGD randomly samples a subset of the training examples on each iteration, and uses these examples to compute an estimate of the gradient of the loss function. This is in contrast to ""batch"" gradient descent, which uses all of the training examples on each iteration to compute the exact gradient of the loss function. 
+
+ The advantage of using a stochastic process in gradient descent is that it can help to avoid getting stuck in local minima and speed up the optimization process, by introducing some randomness or ""noise"" into the gradient updates. In practice, SGD is a commonly used optimization algorithm in machine learning, particularly for training large-scale models (such as deep neural networks) on large datasets. ‍ ‍ 
+<+++>
+"
+"What are RMSE and L1 norm?
+
+###
+
+"," RMSE (root-mean-square error) and L1 norm (also known as mean absolute error or MAE) are two metrics that are commonly used to measure the error or difference between a predicted value and the true value. 
+
+ The RMSE is calculated by first squaring the difference between the predicted and true values, taking the average of these squared differences, and then taking the square root of the average. In other words, it is the square root of the mean of the squared differences between the predicted and true values. The RMSE is a measure of the average magnitude of the error, and is sensitive to large errors (due to the squaring of the differences). 
+
+ The L1 norm is calculated by taking the absolute value of the difference between the predicted and true values, and then taking the average of these absolute differences. In other words, it is the mean of the absolute differences between the predicted and true values. The L1 norm is a measure of the average magnitude of the error, but is less sensitive to large errors than the RMSE (due to the use of absolute values instead of squared values). ‍ ‍ 
+<+++>
+"
+"write a list of the steps for each epoch in gradient descent
+
+###
+
+"," The following is a list of the steps that may be performed in each epoch of a gradient descent algorithm: 
+
+ 1. Randomly shuffle the training data (optional). 
+
+ 2. For each mini-batch in the training data: 
+
+ a. Compute the model's predictions for the mini-batch. 
+
+ b. Compute the loss for the mini-batch (e.g. by comparing the model's predictions to the true output for the mini-batch). 
+
+ c. Compute the gradient of the loss function with respect to the model parameters. 
+
+ d. Update the model parameters in the direction of the negative gradient (i.e. the direction of steepest descent), using a specified learning rate. 
+
+ 3. Evaluate the performance of the model on a validation dataset (optional). 
+
+ Note that the exact steps involved in each epoch of gradient descent can vary depending on the specific problem and implementation. For example, some implementations of gradient descent may include additional steps, such as regularizing the model parameters or adjusting the learning rate over time. ‍ ‍ 
+<+++>
+"
+"What is a ""gradient""?
+
+###
+
+"," In the context of machine learning and optimization, the term ""gradient"" refers to a vector of partial derivatives that describes the rate of change of a function with respect to its input variables. Intuitively, the gradient of a function at a given point can be thought of as a vector pointing in the direction of the steepest ascent (or, in the case of a negative gradient, the steepest descent) of the function at that point. 
+
+ In machine learning, the gradient is typically used in optimization algorithms, such as gradient descent, to find the parameters (or ""weights"") of a model that minimize a loss function or maximize a reward function. At each iteration of the algorithm, the gradient of the loss or reward function with respect to the model parameters is computed, and the parameters are updated in the direction of the negative gradient (i.e. the direction of steepest descent) in order to improve the performance of the model. ‍ ‍ 
+<+++>
+"
+"whats the command to get the url of the remote origin
+
+###
+
+"," To get the URL of the remote origin in Git, you can use the `git remote get-url` command with the `origin` argument. For example: `git remote get-url origin` Alternatively, you can use the `git remote -v` command, which will show the URLs of all remote repositories associated with your local repository, including the remote origin. For example: 
+```
+ $ git remote -v origin 
+
+https://github.com/user/repository.git (fetch) origin 
+
+https://github.com/user/repository.git (push) 
+```
+ If you have multiple remote repositories associated with your local repository, you can use the `--all` option with the `git remote get-url` command to show the URLs of all remote repositories. For example: `git remote get-url --all` ‍ ‍ 
+<+++>
+"
+"how to et an alias in command line
+
+###
+
+"," To set an alias in the command line on a Unix-based operating system, you can use the `alias` command followed by the name of the alias and the command you want the alias to execute. For example: `alias ll=""ls -l"" ` This will create an alias named `ll` that will execute the `ls -l` command when you type `ll` in the command line. 
+
+ To make an alias permanent (i.e. persist across terminal sessions), you can add the `alias` command to your shell's configuration file (e.g. `~/.bashrc` or `~/.zshrc`). For example, you could add the following line to your `~/.bashrc` file to create the `ll` alias shown above: `alias ll=""ls -l"" ` The next time you start a new terminal session, the alias will be automatically created. 
+
+ To remove an alias, you can use the `unalias` command followed by the name of the alias. For example: ` unalias ll ` This will remove the `ll` alias. If you added the alias to your shell's configuration file, you will also need to remove the corresponding `alias` command from the file to prevent the alias from being recreated in future terminal sessions. ‍ ‍ 
+<+++>
+"
+"could you give an example of running 'npm init' multiple times
+
+###
+
+"," Sure! Let's say you have a directory named `my-project` that does not have a `package.json` file. If you open a terminal, navigate to the `my-project` directory, and run the `npm init` command, npm will create a new `package.json` file in the directory. 
+
+ If you run the `npm init` command again in the same directory, npm will prompt you to update the existing `package.json` file, rather than creating a new one. For example, you could update the ""description"" field in the `package.json` file by following the prompts in the terminal. 
+
+ If you want to create a new `package.json` file, you can use the `-f` or `--force` option with the `npm init` command. For example, if you run `npm init -f` in the `my-project` directory, npm will create a new `package.json` file, overwriting the existing one. 
+
+ You can run the `npm init` command as many times as you want in a directory, but the behavior of the command will depend on whether the directory already has a `package.json` file, and whether you use the `-f` or `--force` option, as described above. ‍ ‍ 
+<+++>
+"
+"are there places where derivative is discontinuous? at a specific point it jumps to infinity or some other number then returns to its normal slope.
+
+###
+
+"," Yes, there are situations where the derivative of a function can be discontinuous at a point. For example, if the graph of a function has a ""corner"" or ""cusp"" at a point (i.e. the graph changes direction abruptly at that point), the derivative will be discontinuous at that point, since the slope of the tangent to the graph will ""jump"" from one value to another at that point. 
+
+ Similarly, if the graph of a function has a vertical asymptote at a point (i.e. the graph approaches infinity as it approaches that point), the derivative will be discontinuous at that point, since the slope of the tangent to the graph will approach infinity at that point. 
+
+ In general, if a function is not continuous at a point (i.e. the graph has a ""break"" or ""jump"" at that point), the derivative will also be discontinuous at that point. However, it is possible for a function to be continuous at a point, but for the derivative to be discontinuous at that point (e.g. if the function has a corner or cusp at that point). ‍ ‍ 
+<+++>
+"
+"whats the difference between ln and log
+
+###
+
+"," The main difference between `ln` and `log` is that `ln` usually refers to the natural logarithm (i.e. the logarithm with base `e`, where `e` is the mathematical constant approximately equal to 2.71828), while `log` can refer to logarithms with different bases. 
+
+ In particular, in mathematics, `log` is often used to represent the common logarithm (i.e. the logarithm with base 10). However, in some contexts (such as computer science), `log` is used to represent the natural logarithm (i.e. the logarithm with base `e`), and the base must be specified explicitly if a logarithm with a different base is desired (e.g. `log2` for the logarithm with base 2). 
+
+ In general, it is important to pay attention to the context in which `log` is used, in order to determine which base is being used for the logarithm. ‍ ‍ 
+<+++>
+"

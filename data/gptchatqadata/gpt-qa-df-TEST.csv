@@ -1,0 +1,132 @@
+prompt,completion
+"how to deal with ls illegal option
+
+###
+
+"," If you get an ""illegal option"" error when trying to use the `ls` command with a particular option in the terminal, it usually means that the version of `ls` installed on your system does not support that option. To resolve this issue, you can try the following: 
+
+ 1. Check the `ls` man page to see if the option you're trying to use is supported by the version of `ls` installed on your system. You can view the man page by running the command `man ls` in the terminal. 2. If the option is not supported by your version of `ls`, you can try updating `ls` to a newer version that supports the option. On a Mac, you can update `ls` by updating the operating system to the latest version. On a Linux system, you can update `ls` by updating the `coreutils` package using your system's package manager (e.g. `apt-get` or `yum`). 3. If updating `ls` is not an option, you can try using an alternative option that is supported by your version of `ls`, or you can try using a different command that provides similar functionality. For example, if you're trying to use the `--color` option and it's not supported by your version of `ls`, you can try using the `--color=always` option instead, or you can try using a different command such as `tree -C` to get colorized output. ‍ ‍ 
+<+++>
+"
+"what is the ./bashrc file
+
+###
+
+"," The `~/.bashrc` file is a configuration file used by the Bash shell on Unix-based operating systems. When you start a new Bash shell (e.g. by opening a new terminal window), Bash will automatically run the commands in the `~/.bashrc` file to configure the shell environment. For example, the `~/.bashrc` file may contain commands to set environment variables, define shell functions, and create aliases for commonly used commands. 
+
+ The `~/.bashrc` file is typically located in your home directory (represented by the `~` symbol) and is a hidden file (because its name starts with a `.`). You can view and edit the `~/.bashrc` file using a text editor such as Vim or Nano. ‍ ‍ 
+<+++>
+"
+"what is broadcasting?
+
+###
+
+"," In general, ""broadcasting"" refers to the transmission of information (such as audio or video content) from a single source to multiple recipients simultaneously. For example, traditional radio and television broadcasting involves transmitting audio and video signals over the airwaves to a large audience of listeners or viewers. 
+
+ In the context of computer networking, ""broadcasting"" refers to the transmission of data from a single source to all devices on a network simultaneously. For example, a device on a local area network (LAN) may broadcast a message to all other devices on the network in order to discover other devices or services on the network. This is different from ""unicasting"", where data is transmitted from a single source to a single recipient, and ""multicasting"", where data is transmitted from a single source to a specific group of recipients. ‍ ‍ 
+<+++>
+"
+"What is a ""gradient""?
+
+###
+
+"," In the context of machine learning and optimization, the term ""gradient"" refers to a vector of partial derivatives that describes the rate of change of a function with respect to its input variables. Intuitively, the gradient of a function at a given point can be thought of as a vector pointing in the direction of the steepest ascent (or, in the case of a negative gradient, the steepest descent) of the function at that point. 
+
+ In machine learning, the gradient is typically used in optimization algorithms, such as gradient descent, to find the parameters (or ""weights"") of a model that minimize a loss function or maximize a reward function. At each iteration of the algorithm, the gradient of the loss or reward function with respect to the model parameters is computed, and the parameters are updated in the direction of the negative gradient (i.e. the direction of steepest descent) in order to improve the performance of the model. ‍ ‍ 
+<+++>
+"
+"Write pseudocode showing the basic steps taken in each epoch for SGD.
+
+###
+
+"," The following pseudocode shows the basic steps taken in each epoch of a stochastic gradient descent (SGD) algorithm: 
+```
+ # For each epoch... for epoch in range(num_epochs): # Randomly shuffle the training data shuffle(training_data) 
+
+# For each mini-batch in the training data... for batch in get_batches(training_data, batch_size): # Compute the gradient of the loss function with respect to the model parameters, using the mini-batch gradient = compute_gradient(loss_function, model_parameters, batch) 
+
+# Update the model parameters in the direction of the negative gradient model_parameters -= learning_rate * gradient 
+```
+ Note that this is a simplified example, and additional steps (e.g. evaluating the model's performance on a validation dataset) may be included in a real-world implementation of SGD. ‍ ‍ 
+<+++>
+"
+"What is ""ReLU""? Draw a plot of it for values from -2 to +2.
+
+###
+
+"," In machine learning, the term ""ReLU"" refers to the rectified linear unit activation function, which is defined as: `ReLU(x) = max(0, x)` In other words, the ReLU function takes an input value `x` and outputs the value `x` if `x` is positive, or `0` if `x` is negative. 
+
+ The ReLU function is commonly used in neural networks, because it is easy to compute and can help to address the ""vanishing gradient"" problem that can occur when training deep neural networks with traditional activation functions, such as the sigmoid function. ‍ ‍ 
+<+++>
+"
+"what are all the steps of deep learning?
+
+###
+
+"," The steps involved in a typical deep learning workflow can vary depending on the specific problem and application. However, some common steps in a deep learning workflow may include: 
+
+ 1. Defining the problem and gathering data: This involves defining the problem to be solved, and gathering or generating the data that will be used to train and evaluate the deep learning model. 
+
+ 2. Preprocessing the data: This may include cleaning the data (e.g. removing missing or irrelevant data points), transforming the data into a format that can be used by the deep learning model (e.g. converting categorical data to numerical data), and splitting the data into training and validation datasets. 
+
+ 3. Designing and training the model: This involves defining the architecture of the deep learning model (e.g. the number and type of layers in a neural network), and training the model using the training data. 
+
+ 4. Evaluating the model: This involves evaluating the performance of the model on the validation data, and tuning the model (e.g. by adjusting the model architecture or training parameters) to improve its performance, if necessary. 
+
+ 5. Deploying the model: Once the model has been trained and evaluated, it can be deployed for use in a real-world application. 
+
+ Note that these steps are not necessarily linear, and may involve iterating back and forth between different steps (e.g. revising the model architecture or gathering more data based on the results of the model evaluation). ‍ ‍ 
+<+++>
+"
+"how to update a global variable with javascript?
+
+###
+
+"," it's declared like this? let myvar = 10; 
+
+ 
+
+ To update the value of a global variable in JavaScript, you can simply assign a new value to the variable. For example, if you have a global variable declared as `let myvar = 10;`, you could update the value of the variable by assigning a new value to it, like this: `myvar = 20; ` Note that if you are updating the value of a global variable from within a function, you do not need to use the `var`, `let`, or `const` keyword when assigning the new value to the variable. For example: 
+```
+ let myvar = 10; 
+
+ function updateMyVar() { myvar = 20; } 
+```
+ If you use the `var`, `let`, or `const` keyword when assigning the new value to the variable inside the function, this will create a new local variable with the same name as the global variable, rather than updating the value of the global variable. ‍ ‍ 
+<+++>
+"
+"thats super interesting, kind of like how loss functions are approximated with many little ReLU functions?
+
+###
+
+"," Yes, there is a similarity between the idea of approximating a loss function using many small ReLU (rectified linear unit) functions and the idea of representing a complex waveform as a sum of sine waves. In both cases, you are using a large number of simple ""building blocks"" (ReLU functions or sine waves) to approximate or represent a more complex function or waveform. 
+
+ Note that while there is a conceptual similarity between these two ideas, the underlying mathematics is different. In the case of approximating a loss function with ReLU functions, you are using a technique known as function approximation, where you are trying to find a function (in this case, a sum of ReLU functions) that closely approximates another function (in this case, the loss function). In the case of representing a waveform as a sum of sine waves, you are using a technique known as Fourier analysis, where you are decomposing a waveform into its constituent sinusoidal components. ‍ ‍ 
+<+++>
+"
+"what does it mean when people say they're a g.o.a.t.?
+
+###
+
+","  
+
+When people say that they are a ""G.O.A.T."" (or ""GOAT""), they are usually referring to the phrase ""Greatest Of All Time"". In other words, they are claiming to be the best ever in their particular field or area of expertise. 
+
+ For example, in the context of sports, an athlete might be referred to as the ""G.O.A.T."" if they are considered to be the best ever in their sport (e.g. Michael Jordan in basketball or Serena Williams in tennis). Similarly, in the context of music, an artist might be referred to as the ""G.O.A.T."" if they are considered to be the best ever in their genre (e.g. The Beatles in rock music or Beyoncé in pop music). 
+
+ In general, the term ""G.O.A.T."" is used to describe someone or something that is considered to be the best ever in their field. It is often used in a hyperbolic or exaggerated way, and is typically a matter of subjective opinion or personal preference. ‍ ‍ 
+<+++>
+"
+"what is the difference between linear regression and other types of regression? what does ""linear"" mean in this context?
+
+###
+
+"," In statistics and machine learning, the term ""regression"" refers to a set of techniques for modeling the relationship between a dependent variable and one or more independent variables. There are many different types of regression, including linear regression, logistic regression, polynomial regression, and more. 
+
+ The main difference between linear regression and other types of regression is that linear regression assumes that the relationship between the dependent and independent variables can be modeled as a linear function. In other words, it assumes that the dependent variable can be expressed as a linear combination of the independent variables, with a constant term and a set of coefficients or ""weights"" for each independent variable. 
+
+ In contrast, other types of regression can be used to model nonlinear relationships between the dependent and independent variables. For example, logistic regression is a type of regression that is used to model the relationship between a dependent variable and one or more independent variables, where the dependent variable is a binary or categorical variable (such as 0 or 1). Polynomial regression is another type of regression that can be used to model nonlinear relationships, by fitting a polynomial function to the data. 
+
+ In general, the choice of which type of regression to use will depend on the nature of the data and the relationship that you want to model. Linear regression is a good choice when the relationship between the dependent and independent variables is expected to be linear, and other types of regression can be used when the relationship is expected to be nonlinear. 
+<+++>
+"

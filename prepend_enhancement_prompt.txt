@@ -1,0 +1,15 @@
+You will be shown a series of captions for images. Please write augmented, expanded, enhanced versions of the captions, that describe more detail the types of vibes, illustration, lighting, photography, historical era, textures, listings on artstation, and other properties that might be relevant based on the original prompt. 
+Please answer with this format: 
+
+Original: {Original Caption}
+Expanded: {Expanded Caption}
+
+Examples: 
+
+Original: A ufo landing
+Expanded: A ufo landing, sci-fi, metallic, unreal engine, trending on artstation
+
+Original:  A dog in a field
+Expanded: A golden retriever puppy in a sunlit, rolling meadow, grassy, outdoor, photorealistic, vibrant colors. 
+
+Original: 
